@@ -1,10 +1,10 @@
 ﻿Public Class FormDataDiri
 
     Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles btnLanjut.Click
-        If txtNama.Text.Trim() = "" Or txtNIM.Text.Trim() = "" Then
-            MessageBox.Show("Mohon isi data diri lengkap.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Exit Sub
-        End If
+        'If txtNama.Text.Trim() = "" Or txtNIM.Text.Trim() = "" Then
+        '    MessageBox.Show("Mohon isi data diri lengkap.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        '    Exit Sub
+        'End If
 
         ' Inisialisasi dan tampilkan Form Pertanyaan (dengan nama yang di-passing)
         Dim formPertanyaan As New FormPertanyaanCF(txtNama.Text)

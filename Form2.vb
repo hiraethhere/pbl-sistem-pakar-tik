@@ -1,15 +1,17 @@
 ﻿' FormPertanyaanCF.vb
 Imports System.Data
 Imports System.Data.SqlClient
+Imports System.Runtime.Intrinsics.X86
 Imports Microsoft.Data.SqlClient
 
 Public Class FormPertanyaanCF
 
     ' Array untuk menyimpan nilai CF user (14 pertanyaan, index 1-14)
-    Dim jawabanCF(22) As Double
+    Dim jawabanCF As New List(Of Input)
     Dim dtPertanyaan As New DataTable
     Dim indexPertanyaan As Integer = 1 ' Mulai dari pertanyaan ke-1
     Dim NamaMhs As String
+    Dim kode As String
     Dim TotalDetik As Integer = 30 * 60 ' 30 menit * 60 detik
     ' Constructor untuk menerima Nama dari Form sebelumnya
     Public Sub New(ByVal nama As String)
@@ -56,10 +58,11 @@ Public Class FormPertanyaanCF
 
     ' Tampilkan Pertanyaan Saat Ini
     Sub TampilkanPertanyaan()
-        If indexPertanyaan <= dtPertanyaan.Rows.Count Then
+        If indexPertanyaan <= dtPertanyaan.Rows.Count() Then
             Dim row As DataRow = dtPertanyaan.Rows(indexPertanyaan - 1)
             lblNoSoal.Text = "Pertanyaan ke-" & indexPertanyaan
             lblPertanyaan.Text = row("pertanyaan").ToString()
+            kode = row("id")
 
             ' Reset pilihan Radio Button
             rbA.Checked = False : rbB.Checked = False : rbC.Checked = False
@@ -92,107 +95,121 @@ Public Class FormPertanyaanCF
         End If
 
         ' Simpan nilai CF user untuk pertanyaan saat ini
-        jawabanCF(indexPertanyaan) = nilaiCFUser
+        jawabanCF.Add(New Input(kode, nilaiCFUser))
 
         ' Lanjut ke pertanyaan berikutnya
         indexPertanyaan += 1
         TampilkanPertanyaan()
     End Sub
 
-    ' KODE CORE SISTEM PAKAR: PERHITUNGAN CF
     Sub ProsesCertaintyFactor()
         TimerUjian.Stop()
-        ' 1. Deklarasi array untuk CF Pakar (dari Database)
-        Dim CF_SOFT_DEV(14), CF_UIUX(14), CF_NET_ENGG(14) As Double
 
-        ' 2. Ambil CF Pakar dari Database
-        ModuleKoneksi.BukaKoneksi()
-        Dim cmd As New SqlCommand("SELECT cf_soft_dev, cf_uiux, cf_net_engg FROM tbl_rule_cf ORDER BY id_pertanyaan", ModuleKoneksi.conn)
-        Dim rd As SqlDataReader = cmd.ExecuteReader()
-        Dim i As Integer = 1 ' Mulai dari index 1
-        While rd.Read()
-            CF_SOFT_DEV(i) = rd("cf_soft_dev")
-            CF_UIUX(i) = rd("cf_uiux")
-            CF_NET_ENGG(i) = rd("cf_net_engg")
-            i += 1
-        End While
-        rd.Close()
-        ModuleKoneksi.TutupKoneksi()
+        Dim listOfRules As New List(Of Aturan) From {
+            New Aturan("R01", "P01", 0.98, jawabanCF, 0, 1, 4, 10, 12, 16),
+            New Aturan("R02", "P01", 0.95, jawabanCF, 0, 1, 4, 12),
+            New Aturan("R03", "P01", 0.88, jawabanCF, 0, 1, 4),
+            New Aturan("R04", "P01", 0.8, jawabanCF, 0, 3, 4),
+            New Aturan("R05", "P02", 0.98, jawabanCF, 0, 2, 3, 15, 18, 20),
+            New Aturan("R06", "P02", 0.9, jawabanCF, 2, 3, 4, 18, 20),
+            New Aturan("R07", "P02", 0.85, jawabanCF, 2, 3, 4, 15),
+            New Aturan("R08", "P02", 0.8, jawabanCF, 3, 14, 15, 20),
+            New Aturan("R09", "P03", 0.98, jawabanCF, 4, 5, 14),
+            New Aturan("R10", "P03", 0.92, jawabanCF, 3, 4, 5),
+            New Aturan("R11", "P03", 0.85, jawabanCF, 5, 14),
+            New Aturan("R12", "P03", 0.8, jawabanCF, 3, 4),
+            New Aturan("R13", "P04", 0.98, jawabanCF, 6, 7, 21, 0),
+            New Aturan("R14", "P04", 0.9, jawabanCF, 6, 7, 0),
+            New Aturan("R15", "P04", 0.85, jawabanCF, 6, 7, 12),
+            New Aturan("R16", "P04", 0.82, jawabanCF, 7, 21),
+            New Aturan("R17", "P05", 0.98, jawabanCF, 8, 9, 12, 13, 17),
+            New Aturan("R18", "P05", 0.92, jawabanCF, 8, 9, 17),
+            New Aturan("R19", "P05", 0.86, jawabanCF, 8, 9, 13),
+            New Aturan("R20", "P05", 0.8, jawabanCF, 9, 12),
+            New Aturan("R21", "P06", 0.98, jawabanCF, 10, 11, 12, 13, 17, 19),
+            New Aturan("R22", "P06", 0.94, jawabanCF, 10, 11, 17, 19),
+            New Aturan("R23", "P06", 0.85, jawabanCF, 10, 11, 12, 19),
+            New Aturan("R24", "P06", 0.8, jawabanCF, 10, 11, 12, 13)
+        }
 
-        ' 3. Hitung dan Combine CF (Rumus CF Combine: CF1 + CF2 * (1 - CF1))
-        Dim CF_HASIL_SOFT_DEV As Double = 0.0
-        Dim CF_HASIL_UIUX As Double = 0.0
-        Dim CF_HASIL_NET_ENGG As Double = 0.0
+        Dim result As List(Of Result) = HitungHasil(listOfRules)
 
-        For i = 1 To 14 ' 14 pertanyaan
-            ' CF[H,E] = CF[H] * CF[E]
-            Dim CF_INDIV_SOFT_DEV As Double = CF_SOFT_DEV(i) * jawabanCF(i)
-            Dim CF_INDIV_UIUX As Double = CF_UIUX(i) * jawabanCF(i)
-            Dim CF_INDIV_NET_ENGG As Double = CF_NET_ENGG(i) * jawabanCF(i)
+        Dim pesan As String = "Top 3 Rekomendasi Profil:" & vbCrLf & "-------------------------" & vbCrLf
 
-            If i = 1 Then
-                ' Inisialisasi CF Kombinasi dengan hasil pertama
-                CF_HASIL_SOFT_DEV = CF_INDIV_SOFT_DEV
-                CF_HASIL_UIUX = CF_INDIV_UIUX
-                CF_HASIL_NET_ENGG = CF_INDIV_NET_ENGG
-            Else
-                ' CF Combine
-                CF_HASIL_SOFT_DEV = CF_HASIL_SOFT_DEV + CF_INDIV_SOFT_DEV * (1 - CF_HASIL_SOFT_DEV)
-                CF_HASIL_UIUX = CF_HASIL_UIUX + CF_INDIV_UIUX * (1 - CF_HASIL_UIUX)
-                CF_HASIL_NET_ENGG = CF_HASIL_NET_ENGG + CF_INDIV_NET_ENGG * (1 - CF_HASIL_NET_ENGG)
+        Dim ranking As Integer = 1
+
+        For Each item In result
+            ' Kita ubah nilai desimal ke persen (contoh: 0.98 jadi "98%")
+            ' Format "0.##" artinya maks 2 angka di belakang koma jika ada
+            Dim persentase As String = (item.persentage).ToString("0.##") & "%"
+
+            ' Masukkan ke variabel pesan
+            ' Format hasil: "1. P05 - (98%)"
+            pesan &= ranking & ". " & item.profile & " - (" & persentase & ")" & vbCrLf
+
+            ranking += 1
+        Next
+
+        ' 4. Tampilkan Message Box
+        MessageBox.Show(pesan, "Hasil Diagnosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Me.Close()
+    End Sub
+
+    Function HitungHasil(listOfRules As List(Of Aturan)) As List(Of Result)
+        Dim CF_P01, CF_P02, CF_P03, CF_P04, CF_P05, CF_P06 As Double
+        CF_P01 = 0 : CF_P02 = 0 : CF_P03 = 0 : CF_P04 = 0 : CF_P05 = 0 : CF_P06 = 0
+
+        For Each item In listOfRules
+            Dim currentCF As Double = item.hitungCF()
+            If currentCF > 0 Then
+                Select Case item.profile.ToString()
+                    Case "P01"
+                        CF_P01 = combineCF(CF_P01, currentCF)
+                    Case "P02"
+                        CF_P02 = combineCF(CF_P02, currentCF)
+                    Case "P03"
+                        CF_P03 = combineCF(CF_P03, currentCF)
+                    Case "P04"
+                        CF_P04 = combineCF(CF_P04, currentCF)
+                    Case "P05"
+                        CF_P05 = combineCF(CF_P05, currentCF)
+                    Case "P06"
+                        CF_P06 = combineCF(CF_P06, currentCF)
+                End Select
             End If
         Next
 
-        ' 4. Tentukan Profil dengan CF Tertinggi
-        Dim hasilTopik As String = "Belum Dapat Ditentukan"
-        Dim nilaiTertinggi As Double = 0.0
+        Dim hasilAkhir As New List(Of Result)
 
-        If CF_HASIL_SOFT_DEV >= CF_HASIL_UIUX AndAlso CF_HASIL_SOFT_DEV >= CF_HASIL_NET_ENGG Then
-            hasilTopik = "Software Developer"
-            nilaiTertinggi = CF_HASIL_SOFT_DEV
-        ElseIf CF_HASIL_UIUX > CF_HASIL_SOFT_DEV AndAlso CF_HASIL_UIUX >= CF_HASIL_NET_ENGG Then
-            hasilTopik = "UI/UX Designer"
-            nilaiTertinggi = CF_HASIL_UIUX
-        ElseIf CF_HASIL_NET_ENGG > CF_HASIL_SOFT_DEV AndAlso CF_HASIL_NET_ENGG > CF_HASIL_UIUX Then
-            hasilTopik = "Network Engineer"
-            nilaiTertinggi = CF_HASIL_NET_ENGG
-        End If
+        hasilAkhir.Add(New Result("P01", CF_P01))
+        hasilAkhir.Add(New Result("P02", CF_P02))
+        hasilAkhir.Add(New Result("P03", CF_P03))
+        hasilAkhir.Add(New Result("P04", CF_P04))
+        hasilAkhir.Add(New Result("P05", CF_P05))
+        hasilAkhir.Add(New Result("P06", CF_P06))
 
-        ' 5. Simpan Hasil ke Database
-        SimpanHasil(NamaMhs, hasilTopik, nilaiTertinggi)
 
-        ' 6. Tampilkan Form Hasil
-        Dim formHasil As New FormHasil(hasilTopik, nilaiTertinggi)
-        formHasil.Show()
-        Me.Close()
+        hasilAkhir.Sort(Function(x, y) y.value.CompareTo(x.value))
+        Dim top3 As List(Of Result) = hasilAkhir.Take(3).ToList()
+        Return top3
+    End Function
 
-    End Sub
+    Function combineCF(oldValue As Double, newValue As Double) As Double
+        Return oldValue + newValue * (1.0 - oldValue)
+    End Function
 
-    Sub SimpanHasil(nama As String, hasil As String, nilaiCF As Double)
-        ModuleKoneksi.BukaKoneksi()
-        Dim query As String = "INSERT INTO tbl_hasil (nama_mahasiswa, hasil_profil, nilai_cf) VALUES (@nama, @hasil, @nilai)"
-        Using cmd As New SqlCommand(query, ModuleKoneksi.conn)
-            cmd.Parameters.AddWithValue("@nama", nama)
-            cmd.Parameters.AddWithValue("@hasil", hasil)
-            cmd.Parameters.AddWithValue("@nilai", nilaiCF)
-            cmd.ExecuteNonQuery()
-        End Using
-        ModuleKoneksi.TutupKoneksi()
-    End Sub
 
-    Private Sub lblPertanyaan_Click(sender As Object, e As EventArgs) Handles lblPertanyaan.Click
+    'Sub SimpanHasil(nama As String, hasil As String, nilaiCF As Double)
+    '    ModuleKoneksi.BukaKoneksi()
+    '    Dim query As String = "INSERT INTO tbl_hasil (nama_mahasiswa, hasil_profil, nilai_cf) VALUES (@nama, @hasil, @nilai)"
+    '    Using cmd As New SqlCommand(query, ModuleKoneksi.conn)
+    '        cmd.Parameters.AddWithValue("@nama", nama)
+    '        cmd.Parameters.AddWithValue("@hasil", hasil)
+    '        cmd.Parameters.AddWithValue("@nilai", nilaiCF)
+    '        cmd.ExecuteNonQuery()
+    '    End Using
+    '    ModuleKoneksi.TutupKoneksi()
+    'End Sub
 
-    End Sub
-
-    Private Sub rbA_CheckedChanged(sender As Object, e As EventArgs) Handles rbA.CheckedChanged
-
-    End Sub
-
-    Private Sub TableLayoutPanel2_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel2.Paint
-
-    End Sub
-
-    Private Sub rbB_CheckedChanged(sender As Object, e As EventArgs) Handles rbB.CheckedChanged
-
-    End Sub
 End Class
