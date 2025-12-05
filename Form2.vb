@@ -6,7 +6,7 @@ Imports Microsoft.Data.SqlClient
 Public Class FormPertanyaanCF
 
     ' Array untuk menyimpan nilai CF user (14 pertanyaan, index 1-14)
-    Dim jawabanCF(14) As Double
+    Dim jawabanCF(22) As Double
     Dim dtPertanyaan As New DataTable
     Dim indexPertanyaan As Integer = 1 ' Mulai dari pertanyaan ke-1
     Dim NamaMhs As String
@@ -22,7 +22,7 @@ Public Class FormPertanyaanCF
 
         ' 1. Ambil pertanyaan dari Database
         ModuleKoneksi.BukaKoneksi()
-        Dim da As New SqlDataAdapter("SELECT * FROM tbl_pertanyaan ORDER BY id_pertanyaan", ModuleKoneksi.conn)
+        Dim da As New SqlDataAdapter("SELECT * FROM pertanyaan ORDER BY id", ModuleKoneksi.conn)
         da.Fill(dtPertanyaan)
         ModuleKoneksi.TutupKoneksi()
 
@@ -59,7 +59,7 @@ Public Class FormPertanyaanCF
         If indexPertanyaan <= dtPertanyaan.Rows.Count Then
             Dim row As DataRow = dtPertanyaan.Rows(indexPertanyaan - 1)
             lblNoSoal.Text = "Pertanyaan ke-" & indexPertanyaan
-            lblPertanyaan.Text = row("teks_pertanyaan").ToString()
+            lblPertanyaan.Text = row("pertanyaan").ToString()
 
             ' Reset pilihan Radio Button
             rbA.Checked = False : rbB.Checked = False : rbC.Checked = False
