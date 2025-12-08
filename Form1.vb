@@ -1,16 +1,94 @@
-﻿Public Class FormDataDiri
+﻿Imports Microsoft.Data.SqlClient
 
-    Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles btnLanjut.Click
+Public Class FormLogin
+
+    Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
         'If txtNama.Text.Trim() = "" Or txtNIM.Text.Trim() = "" Then
         '    MessageBox.Show("Mohon isi data diri lengkap.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         '    Exit Sub
         'End If
 
         ' Inisialisasi dan tampilkan Form Pertanyaan (dengan nama yang di-passing)
-        Dim formPertanyaan As New FormPertanyaanCF(txtNama.Text)
-        formPertanyaan.Show()
-        Me.Hide() ' Sembunyikan Form Data Diri
+        'Dim formPertanyaan As New FormPertanyaanCF(txtNama.Text)
+        'formPertanyaan.Show()
+        'Me.Hide() ' Sembunyikan Form Data Diri
+        If NIMTextBox.Text.Trim() = "" Or PasswordTextBox.Text.Trim() = "" Then
+            MessageBox.Show("Silakan isi NIM dan Password.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        Try
+            BukaKoneksi()
+
+            ' Cari NIM di database
+            Dim query As String = "SELECT password, role FROM users WHERE NIM = @NIM"
+            Dim cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@NIM", NIMTextBox.Text.Trim())
+
+            Dim reader As SqlDataReader = cmd.ExecuteReader()
+
+            If reader.HasRows = False Then
+                reader.Close()
+                MessageBox.Show("NIM belum terdaftar!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
+            reader.Read()
+            Dim storedHash As String = reader("password").ToString()
+            Dim role As String = reader("role").ToString()
+            reader.Close()
+
+            ' Bandingkan hash password input dengan database
+            Dim inputHash As String = HashPassword(PasswordTextBox.Text.Trim())
+
+            If inputHash <> storedHash Then
+                MessageBox.Show("Password salah!", "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
+            ' Login berhasil → arahkan sesuai role
+            MessageBox.Show("Login Berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            If role = "Mahasiswa" Then
+                LoggedNIM = NIMTextBox.Text.Trim()
+                LoggedNama = AmbilNama(LoggedNIM)
+                LoggedProdi = AmbilProdi(LoggedNIM)
+                LoggedRole = role
+                DashboardMahasiswa.Show()
+                Me.Close()
+            ElseIf role = "Dosen" Then
+                DashboardDosen.Show()
+                Me.Close()
+            Else
+                MessageBox.Show("Role tidak dikenali. Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End If
+
+            Me.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Terjadi error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            TutupKoneksi()
+        End Try
     End Sub
+
+    Private Function AmbilNama(nim As String) As String
+        Dim namaQuery As String = "SELECT nama FROM users WHERE nim = @NIM"
+        Using cmd As New SqlCommand(namaQuery, conn)
+            cmd.Parameters.AddWithValue("@NIM", nim)
+            Return cmd.ExecuteScalar().ToString()
+        End Using
+    End Function
+
+    Private Function AmbilProdi(nim As String) As String
+        Dim prodiQuery As String = "SELECT prodi FROM users WHERE nim = @NIM"
+        Using cmd As New SqlCommand(prodiQuery, conn)
+            cmd.Parameters.AddWithValue("@NIM", nim)
+            Return cmd.ExecuteScalar().ToString()
+        End Using
+    End Function
 
     Private Sub FormDataDiri_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ' Jika form ini ditutup (tanpa tombol lanjut), kembali ke Dashboard
@@ -20,11 +98,17 @@
         End If
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub FormDataDiri_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'ProdiComboBox.Items.Add("TI")
+        'ProdiComboBox.Items.Add("TMJ")
+        'ProdiComboBox.Items.Add("TMD")
 
+        PasswordTextBox.PasswordChar = "*"
     End Sub
 
-    Private Sub FormDataDiri_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub KembaliButton_Click(sender As Object, e As EventArgs) Handles KembaliButton.Click
+        Dim FormDashboard As New FormDashboard
+        FormDashboard.Show()
+        Me.Close()
     End Sub
 End Class

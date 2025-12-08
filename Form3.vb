@@ -15,7 +15,7 @@ Public Class FormHasil
 
     Private Sub btnTestLagi_Click(sender As Object, e As EventArgs) Handles btnTestLagi.Click
         ' Kembali ke Form Data Diri
-        Dim formDataDiri As New FormDataDiri()
+        Dim formDataDiri As New FormLogin()
         formDataDiri.Show()
         Me.Close()
     End Sub
