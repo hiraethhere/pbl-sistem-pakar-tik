@@ -192,24 +192,12 @@ Public Class FormPertanyaanCF
 
         hasilAkhir.Sort(Function(x, y) y.value.CompareTo(x.value))
         Dim top3 As List(Of Result) = hasilAkhir.Take(3).ToList()
+        Hasil.SimpanHasil(top3)
         Return top3
     End Function
 
     Function combineCF(oldValue As Double, newValue As Double) As Double
         Return oldValue + newValue * (1.0 - oldValue)
     End Function
-
-
-    'Sub SimpanHasil(nama As String, hasil As String, nilaiCF As Double)
-    '    ModuleKoneksi.BukaKoneksi()
-    '    Dim query As String = "INSERT INTO tbl_hasil (nama_mahasiswa, hasil_profil, nilai_cf) VALUES (@nama, @hasil, @nilai)"
-    '    Using cmd As New SqlCommand(query, ModuleKoneksi.conn)
-    '        cmd.Parameters.AddWithValue("@nama", nama)
-    '        cmd.Parameters.AddWithValue("@hasil", hasil)
-    '        cmd.Parameters.AddWithValue("@nilai", nilaiCF)
-    '        cmd.ExecuteNonQuery()
-    '    End Using
-    '    ModuleKoneksi.TutupKoneksi()
-    'End Sub
 
 End Class

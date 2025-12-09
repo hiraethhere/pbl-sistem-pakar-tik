@@ -1,7 +1,6 @@
 ﻿Public Class Result
     Public Property value As Double
     Public Property profile As String
-
     Public Property persentage As Double
     Public Sub New(kode As String, nilai As Double)
         Me.profile = kode
