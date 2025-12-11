@@ -1,0 +1,41 @@
+[33mcommit bfdfb2dea794020b9e0aed02ec8471099c7175ed[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: farrelmaahiraTI-B <farrel.maahira.agraprana.nugraha.tik24@stu.pnj.ac.id>
+Date:   Tue Dec 9 21:34:13 2025 +0700
+
+    bikin simpan hasil
+
+[33mcommit 2c5b15f6934a4b99195becbefe8d29b985d3b0a1[m[33m ([m[1;31morigin/user[m[33m)[m
+Author: sellolintang <sellolintang242@gmail.com>
+Date:   Mon Dec 8 09:05:00 2025 +0700
+
+    add users
+
+[33mcommit ca21356e91c30f9dff95b4ae32419c1edf8ddbee[m[33m ([m[1;31morigin/staging[m[33m)[m
+Author: farrelmaahiraTI-B <farrel.maahira.agraprana.nugraha.tik24@stu.pnj.ac.id>
+Date:   Fri Dec 5 21:13:49 2025 +0700
+
+    bikin inferensi
+
+[33mcommit e65efaa121107ca087375c983b1a88db789a6e9b[m
+Author: farrelmaahiraTI-B <farrel.maahira.agraprana.nugraha.tik24@stu.pnj.ac.id>
+Date:   Fri Dec 5 13:17:19 2025 +0700
+
+    nambahin seeder dan status
+
+[33mcommit 9700f30f22aea8474616f15b0de366e741b7bf00[m
+Author: hiraethhere <oupavonero@gmail.com>
+Date:   Fri Nov 28 12:45:14 2025 +0700
+
+    test
+
+[33mcommit 603bdcde1fac8cb984face5e2b866fe8b4fc328b[m
+Author: hiraethhere <oupavonero@gmail.com>
+Date:   Fri Nov 28 12:42:49 2025 +0700
+
+    Add project files.
+
+[33mcommit e8ee5d50294982c59d2d0e68454deb817099583e[m
+Author: hiraethhere <oupavonero@gmail.com>
+Date:   Fri Nov 28 12:42:46 2025 +0700
+
+    Add .gitattributes and .gitignore.

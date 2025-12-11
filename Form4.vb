@@ -1,6 +1,13 @@
 ﻿Public Class FormDashboard
 
-    Private Sub btnMulai_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
+    ' Hapus semua custom logic (OnPaint, PositionControls, SetupStyling)
+
+    Public Sub New()
+        ' Wajib panggil InitializeComponent yang didefinisikan di Designer.vb
+        InitializeComponent()
+    End Sub
+
+    Private Sub LoginButton_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
         ' Buka Form Data Diri
         Dim FormLogin As New FormLogin()
         FormLogin.Show()
@@ -17,4 +24,8 @@
         FormRegistrasi.Show()
         Me.Hide()
     End Sub
+
+
+
+
 End Class

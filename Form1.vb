@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.Data.SqlClient
 
 Public Class FormLogin
-
+    Private IsNavigatingAway As Boolean = False
     Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
         'If txtNama.Text.Trim() = "" Or txtNIM.Text.Trim() = "" Then
         '    MessageBox.Show("Mohon isi data diri lengkap.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -48,7 +48,7 @@ Public Class FormLogin
 
             ' Login berhasil → arahkan sesuai role
             MessageBox.Show("Login Berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+            IsNavigatingAway = True
             If role = "Mahasiswa" Then
                 LoggedNIM = NIMTextBox.Text.Trim()
                 LoggedNama = AmbilNama(LoggedNIM)
@@ -60,11 +60,12 @@ Public Class FormLogin
                 DashboardDosen.Show()
                 Me.Close()
             Else
-                MessageBox.Show("Role tidak dikenali. Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Role tidak dikenali.
+Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
 
-            Me.Close()
+            ' Me.Close() <--- HAPUS BARIS INI (Baris 92)
 
         Catch ex As Exception
             MessageBox.Show("Terjadi error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -91,8 +92,9 @@ Public Class FormLogin
     End Function
 
     Private Sub FormDataDiri_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' Jika form ini ditutup (tanpa tombol lanjut), kembali ke Dashboard
-        If e.CloseReason = CloseReason.UserClosing Then
+        ' Hanya tampilkan Dashboard jika form ditutup oleh user (tombol 'X'),
+        ' DAN BUKAN saat sedang bernavigasi/setelah login berhasil.
+        If e.CloseReason = CloseReason.UserClosing AndAlso IsNavigatingAway = False Then
             Dim formDashboard As New FormDashboard()
             formDashboard.Show()
         End If
@@ -107,8 +109,13 @@ Public Class FormLogin
     End Sub
 
     Private Sub KembaliButton_Click(sender As Object, e As EventArgs) Handles KembaliButton.Click
+        IsNavigatingAway = True
         Dim FormDashboard As New FormDashboard
         FormDashboard.Show()
         Me.Close()
+    End Sub
+
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+
     End Sub
 End Class

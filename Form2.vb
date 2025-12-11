@@ -99,6 +99,7 @@ Public Class FormPertanyaanCF
 
         ' Lanjut ke pertanyaan berikutnya
         indexPertanyaan += 1
+        ResetRadioButtonColors()
         TampilkanPertanyaan()
     End Sub
 
@@ -119,7 +120,8 @@ Public Class FormPertanyaanCF
             New Aturan("R11", "P03", 0.85, jawabanCF, 5, 14),
             New Aturan("R12", "P03", 0.8, jawabanCF, 3, 4),
             New Aturan("R13", "P04", 0.98, jawabanCF, 6, 7, 21, 0),
-            New Aturan("R14", "P04", 0.9, jawabanCF, 6, 7, 0),
+            New Aturan("R14", "P04", 0.9, jawabanCF,
+            6, 7, 0),
             New Aturan("R15", "P04", 0.85, jawabanCF, 6, 7, 12),
             New Aturan("R16", "P04", 0.82, jawabanCF, 7, 21),
             New Aturan("R17", "P05", 0.98, jawabanCF, 8, 9, 12, 13, 17),
@@ -130,28 +132,13 @@ Public Class FormPertanyaanCF
             New Aturan("R22", "P06", 0.94, jawabanCF, 10, 11, 17, 19),
             New Aturan("R23", "P06", 0.85, jawabanCF, 10, 11, 12, 19),
             New Aturan("R24", "P06", 0.8, jawabanCF, 10, 11, 12, 13)
-        }
+       }
 
         Dim result As List(Of Result) = HitungHasil(listOfRules)
 
-        Dim pesan As String = "Top 3 Rekomendasi Profil:" & vbCrLf & "-------------------------" & vbCrLf
-
-        Dim ranking As Integer = 1
-
-        For Each item In result
-            ' Kita ubah nilai desimal ke persen (contoh: 0.98 jadi "98%")
-            ' Format "0.##" artinya maks 2 angka di belakang koma jika ada
-            Dim persentase As String = (item.persentage).ToString("0.##") & "%"
-
-            ' Masukkan ke variabel pesan
-            ' Format hasil: "1. P05 - (98%)"
-            pesan &= ranking & ". " & item.profile & " - (" & persentase & ")" & vbCrLf
-
-            ranking += 1
-        Next
-
-        ' 4. Tampilkan Message Box
-        MessageBox.Show(pesan, "Hasil Diagnosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ' Redirect ke FormHasil (Form3) dan kirimkan Top 3 hasilnya
+        Dim formHasil As New FormHasil(result)
+        formHasil.Show()
 
         Me.Close()
     End Sub
@@ -199,5 +186,57 @@ Public Class FormPertanyaanCF
     Function combineCF(oldValue As Double, newValue As Double) As Double
         Return oldValue + newValue * (1.0 - oldValue)
     End Function
+
+
+    Private ReadOnly HoverColor_A As Color = Color.FromArgb(255, 150, 150) ' Medium Red (Lebih Gelap dari Light Red/Pink)
+    Private ReadOnly HoverColor_B As Color = Color.FromArgb(150, 204, 204) ' Medium Cyan (Lebih Gelap dari Very Light Cyan)
+    Private ReadOnly HoverColor_C As Color = Color.FromArgb(180, 180, 255) ' Medium Lavender (Lebih Gelap dari Light Lavender)
+    Private ReadOnly HoverColor_D As Color = Color.FromArgb(100, 150, 230)
+    Private ReadOnly HoverColor_E As Color = Color.FromArgb(100, 200, 100) ' Deeper Green (Lebih Gelap dari Brighter Green)
+
+    ' --- 1. Event Handler untuk MOUSE ENTER (Menggunakan Warna Lebih Gelap) ---
+    Private Sub RadioButton_MouseEnter(sender As Object, e As EventArgs) Handles rbA.MouseEnter, rbB.MouseEnter, rbC.MouseEnter, rbD.MouseEnter, rbE.MouseEnter
+        Dim rb As RadioButton = CType(sender, RadioButton)
+
+        If Not rb.Checked Then
+            Select Case rb.Name
+                Case "rbA" : rb.BackColor = HoverColor_A
+                Case "rbB" : rb.BackColor = HoverColor_B
+                Case "rbC" : rb.BackColor = HoverColor_C
+                Case "rbD" : rb.BackColor = HoverColor_D
+                Case "rbE" : rb.BackColor = HoverColor_E
+            End Select
+        End If
+    End Sub
+
+    ' --- 2. Event Handler untuk MOUSE LEAVE (Mengembalikan Warna Asli) ---
+    ' (Logika ini tetap sama, mengembalikan warna statis yang didefinisikan di Designer.vb)
+    Private Sub RadioButton_MouseLeave(sender As Object, e As EventArgs) Handles rbA.MouseLeave, rbB.MouseLeave, rbC.MouseLeave, rbD.MouseLeave, rbE.MouseLeave
+        Dim rb As RadioButton = CType(sender, RadioButton)
+
+        If Not rb.Checked Then
+            Select Case rb.Name
+                Case "rbA" : rb.BackColor = SystemColors.ControlLight
+                Case "rbB" : rb.BackColor = SystemColors.GradientInactiveCaption
+                Case "rbC" : rb.BackColor = SystemColors.InactiveCaption
+                Case "rbD" : rb.BackColor = SystemColors.GradientActiveCaption
+                Case "rbE" : rb.BackColor = Color.FromArgb(192, 255, 192)
+                Case Else : rb.BackColor = SystemColors.Control
+            End Select
+        End If
+    End Sub
+
+    Private Sub ResetRadioButtonColors()
+        Dim rbs() As RadioButton = {rbA, rbB, rbC, rbD, rbE}
+
+        For Each rb As RadioButton In rbs
+            ' 1. Hapus status checked (sangat penting untuk pertanyaan baru)
+            rb.Checked = False
+
+            ' 2. Panggil logika MouseLeave secara manual
+            '    Ini memaksa tombol untuk mengambil warna defaultnya kembali.
+            RadioButton_MouseLeave(rb, EventArgs.Empty)
+        Next
+    End Sub
 
 End Class
