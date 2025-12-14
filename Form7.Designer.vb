@@ -64,9 +64,9 @@ Partial Class DashboardDosen
         ' 
         ' NamaTextBox
         ' 
-        NamaTextBox.Location = New Point(13, 20)
+        NamaTextBox.Location = New Point(13, 17)
         NamaTextBox.Name = "NamaTextBox"
-        NamaTextBox.Size = New Size(172, 24)
+        NamaTextBox.Size = New Size(172, 22)
         NamaTextBox.TabIndex = 0
         ' 
         ' Label1
@@ -74,7 +74,7 @@ Partial Class DashboardDosen
         Label1.AutoSize = True
         Label1.Location = New Point(13, 0)
         Label1.Name = "Label1"
-        Label1.Size = New Size(42, 17)
+        Label1.Size = New Size(39, 14)
         Label1.TabIndex = 1
         Label1.Text = "Nama"
         ' 
@@ -83,7 +83,7 @@ Partial Class DashboardDosen
         Label2.AutoSize = True
         Label2.Location = New Point(13, 0)
         Label2.Name = "Label2"
-        Label2.Size = New Size(33, 17)
+        Label2.Size = New Size(29, 14)
         Label2.TabIndex = 2
         Label2.Text = "NIM"
         ' 
@@ -92,22 +92,22 @@ Partial Class DashboardDosen
         Label3.AutoSize = True
         Label3.Location = New Point(13, 0)
         Label3.Name = "Label3"
-        Label3.Size = New Size(37, 17)
+        Label3.Size = New Size(35, 14)
         Label3.TabIndex = 3
         Label3.Text = "Prodi"
         ' 
         ' NIMTextBox
         ' 
-        NIMTextBox.Location = New Point(13, 20)
+        NIMTextBox.Location = New Point(13, 17)
         NIMTextBox.Name = "NIMTextBox"
-        NIMTextBox.Size = New Size(172, 24)
+        NIMTextBox.Size = New Size(172, 22)
         NIMTextBox.TabIndex = 4
         ' 
         ' PasswordTextBox
         ' 
-        PasswordTextBox.Location = New Point(13, 20)
+        PasswordTextBox.Location = New Point(13, 17)
         PasswordTextBox.Name = "PasswordTextBox"
-        PasswordTextBox.Size = New Size(172, 24)
+        PasswordTextBox.Size = New Size(172, 22)
         PasswordTextBox.TabIndex = 5
         ' 
         ' DataGridView
@@ -115,18 +115,18 @@ Partial Class DashboardDosen
         DataGridView.BackgroundColor = Color.AliceBlue
         DataGridView.BorderStyle = BorderStyle.Fixed3D
         DataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridView.Location = New Point(220, 10)
+        DataGridView.Location = New Point(220, 9)
         DataGridView.Name = "DataGridView"
         DataGridView.RowHeadersWidth = 45
-        DataGridView.Size = New Size(564, 375)
+        DataGridView.Size = New Size(564, 331)
         DataGridView.TabIndex = 6
         ' 
         ' ProdiComboBox
         ' 
         ProdiComboBox.FormattingEnabled = True
-        ProdiComboBox.Location = New Point(13, 20)
+        ProdiComboBox.Location = New Point(13, 17)
         ProdiComboBox.Name = "ProdiComboBox"
-        ProdiComboBox.Size = New Size(172, 23)
+        ProdiComboBox.Size = New Size(172, 22)
         ProdiComboBox.TabIndex = 7
         ' 
         ' Label4
@@ -134,16 +134,16 @@ Partial Class DashboardDosen
         Label4.AutoSize = True
         Label4.Location = New Point(13, 0)
         Label4.Name = "Label4"
-        Label4.Size = New Size(33, 17)
+        Label4.Size = New Size(32, 14)
         Label4.TabIndex = 8
         Label4.Text = "Role"
         ' 
         ' RoleComboBox
         ' 
         RoleComboBox.FormattingEnabled = True
-        RoleComboBox.Location = New Point(13, 20)
+        RoleComboBox.Location = New Point(13, 17)
         RoleComboBox.Name = "RoleComboBox"
-        RoleComboBox.Size = New Size(172, 23)
+        RoleComboBox.Size = New Size(172, 22)
         RoleComboBox.TabIndex = 9
         ' 
         ' Label5
@@ -151,7 +151,7 @@ Partial Class DashboardDosen
         Label5.AutoSize = True
         Label5.Location = New Point(13, 0)
         Label5.Name = "Label5"
-        Label5.Size = New Size(61, 17)
+        Label5.Size = New Size(59, 14)
         Label5.TabIndex = 10
         Label5.Text = "Password"
         ' 
@@ -164,9 +164,9 @@ Partial Class DashboardDosen
         LogOutButton.FlatStyle = FlatStyle.Flat
         LogOutButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         LogOutButton.ForeColor = Color.White
-        LogOutButton.Location = New Point(6, 469)
+        LogOutButton.Location = New Point(6, 413)
         LogOutButton.Name = "LogOutButton"
-        LogOutButton.Size = New Size(202, 26)
+        LogOutButton.Size = New Size(202, 23)
         LogOutButton.TabIndex = 11
         LogOutButton.Text = "Logout"
         LogOutButton.UseVisualStyleBackColor = False
@@ -179,9 +179,9 @@ Partial Class DashboardDosen
         TambahButton.FlatAppearance.MouseOverBackColor = Color.Lime
         TambahButton.FlatStyle = FlatStyle.Flat
         TambahButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        TambahButton.Location = New Point(356, 392)
+        TambahButton.Location = New Point(356, 346)
         TambahButton.Name = "TambahButton"
-        TambahButton.Size = New Size(126, 25)
+        TambahButton.Size = New Size(126, 22)
         TambahButton.TabIndex = 12
         TambahButton.Text = "Tambah"
         TambahButton.UseVisualStyleBackColor = False
@@ -197,7 +197,7 @@ Partial Class DashboardDosen
         EditButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         EditButton.Location = New Point(3, 3)
         EditButton.Name = "EditButton"
-        EditButton.Size = New Size(196, 24)
+        EditButton.Size = New Size(196, 21)
         EditButton.TabIndex = 13
         EditButton.Text = "Edit"
         EditButton.UseVisualStyleBackColor = False
@@ -211,9 +211,9 @@ Partial Class DashboardDosen
         HapusButton.FlatStyle = FlatStyle.Flat
         HapusButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         HapusButton.ForeColor = Color.White
-        HapusButton.Location = New Point(3, 34)
+        HapusButton.Location = New Point(3, 30)
         HapusButton.Name = "HapusButton"
-        HapusButton.Size = New Size(196, 25)
+        HapusButton.Size = New Size(196, 22)
         HapusButton.TabIndex = 14
         HapusButton.Text = "Hapus"
         HapusButton.UseVisualStyleBackColor = False
@@ -221,9 +221,9 @@ Partial Class DashboardDosen
         ' ClearButton
         ' 
         ClearButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        ClearButton.Location = New Point(220, 431)
+        ClearButton.Location = New Point(220, 380)
         ClearButton.Name = "ClearButton"
-        ClearButton.Size = New Size(130, 25)
+        ClearButton.Size = New Size(130, 22)
         ClearButton.TabIndex = 15
         ClearButton.Text = "Clear"
         ClearButton.UseVisualStyleBackColor = True
@@ -233,10 +233,10 @@ Partial Class DashboardDosen
         FlowLayoutPanel1.Controls.Add(Label2)
         FlowLayoutPanel1.Controls.Add(NIMTextBox)
         FlowLayoutPanel1.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel1.Location = New Point(6, 48)
+        FlowLayoutPanel1.Location = New Point(6, 43)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         FlowLayoutPanel1.Padding = New Padding(10, 0, 0, 0)
-        FlowLayoutPanel1.Size = New Size(202, 56)
+        FlowLayoutPanel1.Size = New Size(202, 49)
         FlowLayoutPanel1.TabIndex = 16
         ' 
         ' FlowLayoutPanel2
@@ -244,10 +244,10 @@ Partial Class DashboardDosen
         FlowLayoutPanel2.Controls.Add(Label1)
         FlowLayoutPanel2.Controls.Add(NamaTextBox)
         FlowLayoutPanel2.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel2.Location = New Point(6, 115)
+        FlowLayoutPanel2.Location = New Point(6, 102)
         FlowLayoutPanel2.Name = "FlowLayoutPanel2"
         FlowLayoutPanel2.Padding = New Padding(10, 0, 0, 0)
-        FlowLayoutPanel2.Size = New Size(202, 54)
+        FlowLayoutPanel2.Size = New Size(202, 48)
         FlowLayoutPanel2.TabIndex = 17
         ' 
         ' FlowLayoutPanel3
@@ -255,10 +255,10 @@ Partial Class DashboardDosen
         FlowLayoutPanel3.Controls.Add(Label3)
         FlowLayoutPanel3.Controls.Add(ProdiComboBox)
         FlowLayoutPanel3.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel3.Location = New Point(6, 182)
+        FlowLayoutPanel3.Location = New Point(6, 161)
         FlowLayoutPanel3.Name = "FlowLayoutPanel3"
         FlowLayoutPanel3.Padding = New Padding(10, 0, 0, 0)
-        FlowLayoutPanel3.Size = New Size(202, 56)
+        FlowLayoutPanel3.Size = New Size(202, 49)
         FlowLayoutPanel3.TabIndex = 18
         ' 
         ' FlowLayoutPanel4
@@ -266,10 +266,10 @@ Partial Class DashboardDosen
         FlowLayoutPanel4.Controls.Add(Label4)
         FlowLayoutPanel4.Controls.Add(RoleComboBox)
         FlowLayoutPanel4.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel4.Location = New Point(6, 249)
+        FlowLayoutPanel4.Location = New Point(6, 220)
         FlowLayoutPanel4.Name = "FlowLayoutPanel4"
         FlowLayoutPanel4.Padding = New Padding(10, 0, 0, 0)
-        FlowLayoutPanel4.Size = New Size(202, 53)
+        FlowLayoutPanel4.Size = New Size(202, 47)
         FlowLayoutPanel4.TabIndex = 19
         ' 
         ' FlowLayoutPanel5
@@ -277,10 +277,10 @@ Partial Class DashboardDosen
         FlowLayoutPanel5.Controls.Add(Label5)
         FlowLayoutPanel5.Controls.Add(PasswordTextBox)
         FlowLayoutPanel5.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel5.Location = New Point(6, 316)
+        FlowLayoutPanel5.Location = New Point(6, 279)
         FlowLayoutPanel5.Name = "FlowLayoutPanel5"
         FlowLayoutPanel5.Padding = New Padding(10, 0, 0, 0)
-        FlowLayoutPanel5.Size = New Size(202, 57)
+        FlowLayoutPanel5.Size = New Size(202, 50)
         FlowLayoutPanel5.TabIndex = 20
         ' 
         ' TableLayoutPanel1
@@ -310,7 +310,7 @@ Partial Class DashboardDosen
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 13.6260576F))
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.8207893F))
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 8.720677F))
-        TableLayoutPanel1.Size = New Size(214, 501)
+        TableLayoutPanel1.Size = New Size(214, 442)
         TableLayoutPanel1.TabIndex = 21
         ' 
         ' TableLayoutPanel2
@@ -319,12 +319,12 @@ Partial Class DashboardDosen
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel2.Controls.Add(EditButton, 0, 0)
         TableLayoutPanel2.Controls.Add(HapusButton, 0, 1)
-        TableLayoutPanel2.Location = New Point(6, 383)
+        TableLayoutPanel2.Location = New Point(6, 338)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 2
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel2.Size = New Size(202, 62)
+        TableLayoutPanel2.Size = New Size(202, 55)
         TableLayoutPanel2.TabIndex = 22
         ' 
         ' Label6
@@ -332,9 +332,9 @@ Partial Class DashboardDosen
         Label6.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         Label6.AutoSize = True
         Label6.Font = New Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(6, 11)
+        Label6.Location = New Point(6, 10)
         Label6.Name = "Label6"
-        Label6.Size = New Size(202, 22)
+        Label6.Size = New Size(202, 19)
         Label6.TabIndex = 23
         Label6.Text = "Data Mahasiswa"
         Label6.TextAlign = ContentAlignment.MiddleCenter
@@ -345,12 +345,12 @@ Partial Class DashboardDosen
         TableLayoutPanel8.ColumnCount = 2
         TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel8.Location = New Point(729, 400)
+        TableLayoutPanel8.Location = New Point(729, 353)
         TableLayoutPanel8.Name = "TableLayoutPanel8"
         TableLayoutPanel8.RowCount = 2
         TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 61F))
         TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 39F))
-        TableLayoutPanel8.Size = New Size(108, 113)
+        TableLayoutPanel8.Size = New Size(108, 100)
         TableLayoutPanel8.TabIndex = 25
         ' 
         ' TableLayoutPanel4
@@ -359,12 +359,12 @@ Partial Class DashboardDosen
         TableLayoutPanel4.ColumnCount = 2
         TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel4.Location = New Point(368, 368)
+        TableLayoutPanel4.Location = New Point(368, 325)
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 2
         TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel4.Size = New Size(556, 133)
+        TableLayoutPanel4.Size = New Size(556, 117)
         TableLayoutPanel4.TabIndex = 22
         ' 
         ' TableLayoutPanel5
@@ -373,12 +373,12 @@ Partial Class DashboardDosen
         TableLayoutPanel5.ColumnCount = 2
         TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel5.Location = New Point(254, 431)
+        TableLayoutPanel5.Location = New Point(254, 380)
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 2
         TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel5.Size = New Size(354, 135)
+        TableLayoutPanel5.Size = New Size(354, 119)
         TableLayoutPanel5.TabIndex = 23
         ' 
         ' TableLayoutPanel6
@@ -387,12 +387,12 @@ Partial Class DashboardDosen
         TableLayoutPanel6.ColumnCount = 2
         TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel6.Location = New Point(535, 135)
+        TableLayoutPanel6.Location = New Point(535, 119)
         TableLayoutPanel6.Name = "TableLayoutPanel6"
         TableLayoutPanel6.RowCount = 2
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel6.Size = New Size(334, 211)
+        TableLayoutPanel6.Size = New Size(334, 186)
         TableLayoutPanel6.TabIndex = 24
         ' 
         ' TableLayoutPanel3
@@ -401,12 +401,12 @@ Partial Class DashboardDosen
         TableLayoutPanel3.ColumnCount = 2
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel3.Location = New Point(383, -35)
+        TableLayoutPanel3.Location = New Point(383, -31)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 2
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel3.Size = New Size(556, 133)
+        TableLayoutPanel3.Size = New Size(556, 117)
         TableLayoutPanel3.TabIndex = 22
         ' 
         ' CekHasilButton
@@ -417,19 +417,19 @@ Partial Class DashboardDosen
         CekHasilButton.FlatAppearance.MouseOverBackColor = Color.Lime
         CekHasilButton.FlatStyle = FlatStyle.Flat
         CekHasilButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        CekHasilButton.Location = New Point(220, 392)
+        CekHasilButton.Location = New Point(220, 346)
         CekHasilButton.Name = "CekHasilButton"
-        CekHasilButton.Size = New Size(126, 25)
+        CekHasilButton.Size = New Size(126, 22)
         CekHasilButton.TabIndex = 13
         CekHasilButton.Text = "Cek Hasil"
         CekHasilButton.UseVisualStyleBackColor = False
         ' 
         ' DashboardDosen
         ' 
-        AutoScaleDimensions = New SizeF(7F, 17F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.CornflowerBlue
-        ClientSize = New Size(790, 501)
+        ClientSize = New Size(790, 442)
         Controls.Add(ClearButton)
         Controls.Add(CekHasilButton)
         Controls.Add(TableLayoutPanel8)
@@ -442,6 +442,7 @@ Partial Class DashboardDosen
         Controls.Add(TableLayoutPanel5)
         MaximizeBox = False
         Name = "DashboardDosen"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Dashboard Dosen"
         CType(DataGridView, ComponentModel.ISupportInitialize).EndInit()
         FlowLayoutPanel1.ResumeLayout(False)
