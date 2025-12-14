@@ -5,9 +5,6 @@ Public Class FormRegistrasi
         ProdiComboBox.Items.Add("TI")
         ProdiComboBox.Items.Add("TMJ")
         ProdiComboBox.Items.Add("TMD")
-
-        RoleComboBox.Items.Add("Mahasiswa")
-        RoleComboBox.Items.Add("Dosen")
     End Sub
 
     Private Sub KembaliButton_Click(sender As Object, e As EventArgs) Handles KembaliButton.Click
@@ -18,7 +15,7 @@ Public Class FormRegistrasi
 
     Private Sub RegistrasiButton_Click(sender As Object, e As EventArgs) Handles RegistrasiButton.Click
         If NamaTextBox.Text.Trim() = "" Or NIMTextBox.Text.Trim() = "" Or
-           ProdiComboBox.Text.Trim() = "" Or RoleComboBox.Text.Trim() = "" Or PasswordTextBox.Text.Trim() = "" Then
+           ProdiComboBox.Text.Trim() = "" Or PasswordTextBox.Text.Trim() = "" Then
             MessageBox.Show("Semua data harus diisi.", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
@@ -36,6 +33,8 @@ Public Class FormRegistrasi
                 Exit Sub
             End If
 
+            Dim roleUser = "Mahasiswa"
+
             ' Hash password sebelum disimpan
             Dim hashedPassword As String = HashPassword(PasswordTextBox.Text.Trim())
 
@@ -46,7 +45,7 @@ Public Class FormRegistrasi
             cmd.Parameters.AddWithValue("@NIM", NIMTextBox.Text.Trim())
             cmd.Parameters.AddWithValue("@Nama", NamaTextBox.Text.Trim())
             cmd.Parameters.AddWithValue("@Prodi", ProdiComboBox.Text.Trim())
-            cmd.Parameters.AddWithValue("@Role", RoleComboBox.Text.Trim())
+            cmd.Parameters.AddWithValue("@Role", roleUser)
             cmd.Parameters.AddWithValue("@Password", hashedPassword)
 
             cmd.ExecuteNonQuery()
@@ -57,7 +56,7 @@ Public Class FormRegistrasi
             NamaTextBox.Clear()
             NIMTextBox.Clear()
             ProdiComboBox.SelectedIndex = -1
-            RoleComboBox.SelectedIndex = -1
+            'RoleComboBox.SelectedIndex = -1
             PasswordTextBox.Clear()
 
             ' Pindah ke dashboard

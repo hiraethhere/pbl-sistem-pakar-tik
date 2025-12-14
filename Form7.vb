@@ -237,4 +237,55 @@ Public Class DashboardDosen
 
         NamaTextBox.Focus()
     End Sub
+
+    Private Function AmbilNama(nim As String) As String
+        Dim namaQuery As String = "SELECT nama FROM users WHERE nim = @NIM"
+        Using cmd As New SqlCommand(namaQuery, conn)
+            cmd.Parameters.AddWithValue("@NIM", nim)
+            Return cmd.ExecuteScalar().ToString()
+        End Using
+    End Function
+
+    Private Function AmbilProdi(nim As String) As String
+        Dim prodiQuery As String = "SELECT prodi FROM users WHERE nim = @NIM"
+        Using cmd As New SqlCommand(prodiQuery, conn)
+            cmd.Parameters.AddWithValue("@NIM", nim)
+            Return cmd.ExecuteScalar().ToString()
+        End Using
+    End Function
+
+    Private Sub CekHasilButton_Click(sender As Object, e As EventArgs) Handles CekHasilButton.Click
+        If NIMTextBox.Text.Trim() = "" Then
+            MessageBox.Show("Silakan isi NIM.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        Try
+            BukaKoneksi()
+
+            Dim query As String = "SELECT COUNT(*) FROM users WHERE nim = @NIM"
+            Dim cmd As New SqlCommand(query, conn)
+            cmd.Parameters.AddWithValue("@NIM", NIMTextBox.Text.Trim())
+
+            Dim jumlah As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+
+            If jumlah > 0 Then
+                ' NIM ditemukan → pindah form
+                NIMMahasiswa = NIMTextBox.Text.Trim()
+                NamaMahasiswa = AmbilNama(NIMMahasiswa)
+                ProdiMahasiswa = AmbilProdi(NIMMahasiswa)
+
+                HasilMahasiswa.Show()
+                Me.Close()
+            Else
+                MessageBox.Show("NIM tidak terdaftar.", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Terjadi error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            TutupKoneksi()
+        End Try
+    End Sub
 End Class

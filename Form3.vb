@@ -79,10 +79,9 @@ Public Class FormHasil
         If MessageBox.Show("Apakah Anda yakin ingin logout?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
 
             ' Kosongkan variabel global yang login
-            LoggedNIM = Nothing
-            LoggedNama = Nothing
-            LoggedProdi = Nothing
-            LoggedRole = Nothing
+            NIMMahasiswa = Nothing
+            NamaMahasiswa = Nothing
+            ProdiMahasiswa = Nothing
 
             ' Buka FormDashboard (Form4) dan tutup FormHasil
             Dim formDashboard As New FormDashboard()

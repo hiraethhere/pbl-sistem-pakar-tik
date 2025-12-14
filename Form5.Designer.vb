@@ -34,17 +34,13 @@ Partial Class FormRegistrasi
         NIMTextBox = New TextBox()
         Label1 = New Label()
         PasswordTextBox = New TextBox()
-        Label2 = New Label()
-        RoleComboBox = New ComboBox()
         FlowLayoutPanel1 = New FlowLayoutPanel()
         FlowLayoutPanel2 = New FlowLayoutPanel()
         FlowLayoutPanel3 = New FlowLayoutPanel()
-        FlowLayoutPanel4 = New FlowLayoutPanel()
         FlowLayoutPanel5 = New FlowLayoutPanel()
         TableLayoutPanel1 = New TableLayoutPanel()
         TableLayoutPanel2 = New TableLayoutPanel()
         Label3 = New Label()
-        TableLayoutPanel3 = New TableLayoutPanel()
         TableLayoutPanel5 = New TableLayoutPanel()
         TableLayoutPanel6 = New TableLayoutPanel()
         TableLayoutPanel4 = New TableLayoutPanel()
@@ -52,11 +48,9 @@ Partial Class FormRegistrasi
         FlowLayoutPanel1.SuspendLayout()
         FlowLayoutPanel2.SuspendLayout()
         FlowLayoutPanel3.SuspendLayout()
-        FlowLayoutPanel4.SuspendLayout()
         FlowLayoutPanel5.SuspendLayout()
         TableLayoutPanel1.SuspendLayout()
         TableLayoutPanel2.SuspendLayout()
-        TableLayoutPanel3.SuspendLayout()
         SuspendLayout()
         ' 
         ' KembaliButton
@@ -68,9 +62,9 @@ Partial Class FormRegistrasi
         KembaliButton.FlatStyle = FlatStyle.Flat
         KembaliButton.Font = New Font("Calibri", 9F, FontStyle.Bold)
         KembaliButton.ForeColor = Color.White
-        KembaliButton.Location = New Point(21, 395)
+        KembaliButton.Location = New Point(21, 449)
         KembaliButton.Name = "KembaliButton"
-        KembaliButton.Size = New Size(367, 26)
+        KembaliButton.Size = New Size(367, 29)
         KembaliButton.TabIndex = 0
         KembaliButton.Text = "Kembali"
         KembaliButton.UseVisualStyleBackColor = False
@@ -83,20 +77,20 @@ Partial Class FormRegistrasi
         RegistrasiButton.FlatStyle = FlatStyle.Flat
         RegistrasiButton.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         RegistrasiButton.ForeColor = SystemColors.ControlText
-        RegistrasiButton.Location = New Point(21, 295)
+        RegistrasiButton.Location = New Point(21, 368)
         RegistrasiButton.Name = "RegistrasiButton"
-        RegistrasiButton.Size = New Size(367, 26)
+        RegistrasiButton.Size = New Size(367, 29)
         RegistrasiButton.TabIndex = 1
         RegistrasiButton.Text = "Registrasi"
         RegistrasiButton.UseVisualStyleBackColor = False
         ' 
         ' ProdiComboBox
         ' 
-        ProdiComboBox.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ProdiComboBox.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ProdiComboBox.FormattingEnabled = True
-        ProdiComboBox.Location = New Point(3, 25)
+        ProdiComboBox.Location = New Point(3, 20)
         ProdiComboBox.Name = "ProdiComboBox"
-        ProdiComboBox.Size = New Size(171, 30)
+        ProdiComboBox.Size = New Size(324, 24)
         ProdiComboBox.TabIndex = 2
         ' 
         ' NamaLabel
@@ -105,7 +99,7 @@ Partial Class FormRegistrasi
         NamaLabel.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         NamaLabel.Location = New Point(3, 0)
         NamaLabel.Name = "NamaLabel"
-        NamaLabel.Size = New Size(39, 14)
+        NamaLabel.Size = New Size(42, 17)
         NamaLabel.TabIndex = 3
         NamaLabel.Text = "Nama"
         ' 
@@ -115,112 +109,86 @@ Partial Class FormRegistrasi
         NIMLabel.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         NIMLabel.Location = New Point(3, 0)
         NIMLabel.Name = "NIMLabel"
-        NIMLabel.Size = New Size(29, 14)
+        NIMLabel.Size = New Size(33, 17)
         NIMLabel.TabIndex = 4
         NIMLabel.Text = "NIM"
         ' 
         ' ProdiLabel
         ' 
         ProdiLabel.AutoSize = True
-        ProdiLabel.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ProdiLabel.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ProdiLabel.Location = New Point(3, 0)
         ProdiLabel.Name = "ProdiLabel"
-        ProdiLabel.Size = New Size(40, 22)
+        ProdiLabel.Size = New Size(41, 17)
         ProdiLabel.TabIndex = 5
         ProdiLabel.Text = "Prodi"
         ' 
         ' NamaTextBox
         ' 
-        NamaTextBox.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        NamaTextBox.Location = New Point(3, 17)
+        NamaTextBox.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        NamaTextBox.Location = New Point(3, 20)
         NamaTextBox.Name = "NamaTextBox"
-        NamaTextBox.Size = New Size(171, 25)
+        NamaTextBox.Size = New Size(324, 22)
         NamaTextBox.TabIndex = 6
         ' 
         ' NIMTextBox
         ' 
-        NIMTextBox.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        NIMTextBox.Location = New Point(3, 17)
+        NIMTextBox.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        NIMTextBox.Location = New Point(3, 20)
         NIMTextBox.Name = "NIMTextBox"
-        NIMTextBox.Size = New Size(172, 25)
+        NIMTextBox.Size = New Size(324, 22)
         NIMTextBox.TabIndex = 7
         ' 
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label1.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.Location = New Point(5, 2)
         Label1.Name = "Label1"
-        Label1.Size = New Size(67, 22)
+        Label1.Size = New Size(69, 17)
         Label1.TabIndex = 8
         Label1.Text = "Password"
         ' 
         ' PasswordTextBox
         ' 
-        PasswordTextBox.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        PasswordTextBox.Location = New Point(5, 27)
+        PasswordTextBox.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        PasswordTextBox.Location = New Point(5, 22)
         PasswordTextBox.Name = "PasswordTextBox"
-        PasswordTextBox.Size = New Size(353, 25)
+        PasswordTextBox.Size = New Size(324, 22)
         PasswordTextBox.TabIndex = 9
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(3, 0)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(35, 22)
-        Label2.TabIndex = 10
-        Label2.Text = "Role"
-        ' 
-        ' RoleComboBox
-        ' 
-        RoleComboBox.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        RoleComboBox.FormattingEnabled = True
-        RoleComboBox.Location = New Point(3, 25)
-        RoleComboBox.Name = "RoleComboBox"
-        RoleComboBox.Size = New Size(172, 30)
-        RoleComboBox.TabIndex = 11
         ' 
         ' FlowLayoutPanel1
         ' 
-        FlowLayoutPanel1.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        FlowLayoutPanel1.Anchor = AnchorStyles.Top
         FlowLayoutPanel1.Controls.Add(NamaLabel)
         FlowLayoutPanel1.Controls.Add(NamaTextBox)
-        FlowLayoutPanel1.Location = New Point(3, 3)
+        FlowLayoutPanel1.FlowDirection = FlowDirection.TopDown
+        FlowLayoutPanel1.Location = New Point(6, 69)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(174, 45)
+        FlowLayoutPanel1.Size = New Size(355, 55)
         FlowLayoutPanel1.TabIndex = 12
         ' 
         ' FlowLayoutPanel2
         ' 
-        FlowLayoutPanel2.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        FlowLayoutPanel2.Anchor = AnchorStyles.Top
         FlowLayoutPanel2.Controls.Add(ProdiLabel)
         FlowLayoutPanel2.Controls.Add(ProdiComboBox)
-        FlowLayoutPanel2.Location = New Point(3, 54)
+        FlowLayoutPanel2.FlowDirection = FlowDirection.TopDown
+        FlowLayoutPanel2.Location = New Point(6, 135)
         FlowLayoutPanel2.Name = "FlowLayoutPanel2"
-        FlowLayoutPanel2.Size = New Size(174, 57)
+        FlowLayoutPanel2.Size = New Size(355, 54)
         FlowLayoutPanel2.TabIndex = 13
         ' 
         ' FlowLayoutPanel3
         ' 
-        FlowLayoutPanel3.Anchor = AnchorStyles.Left Or AnchorStyles.Right
+        FlowLayoutPanel3.Anchor = AnchorStyles.Top
         FlowLayoutPanel3.Controls.Add(NIMLabel)
         FlowLayoutPanel3.Controls.Add(NIMTextBox)
-        FlowLayoutPanel3.Location = New Point(183, 3)
+        FlowLayoutPanel3.FlowDirection = FlowDirection.TopDown
+        FlowLayoutPanel3.Location = New Point(6, 3)
         FlowLayoutPanel3.Name = "FlowLayoutPanel3"
-        FlowLayoutPanel3.Size = New Size(175, 45)
+        FlowLayoutPanel3.Size = New Size(355, 54)
         FlowLayoutPanel3.TabIndex = 13
-        ' 
-        ' FlowLayoutPanel4
-        ' 
-        FlowLayoutPanel4.Anchor = AnchorStyles.Left Or AnchorStyles.Right
-        FlowLayoutPanel4.Controls.Add(Label2)
-        FlowLayoutPanel4.Controls.Add(RoleComboBox)
-        FlowLayoutPanel4.Location = New Point(183, 54)
-        FlowLayoutPanel4.Name = "FlowLayoutPanel4"
-        FlowLayoutPanel4.Size = New Size(175, 57)
-        FlowLayoutPanel4.TabIndex = 14
         ' 
         ' FlowLayoutPanel5
         ' 
@@ -228,28 +196,29 @@ Partial Class FormRegistrasi
         FlowLayoutPanel5.Controls.Add(Label1)
         FlowLayoutPanel5.Controls.Add(PasswordTextBox)
         FlowLayoutPanel5.FlowDirection = FlowDirection.TopDown
-        FlowLayoutPanel5.Location = New Point(3, 123)
+        FlowLayoutPanel5.Location = New Point(3, 201)
         FlowLayoutPanel5.Name = "FlowLayoutPanel5"
         FlowLayoutPanel5.Padding = New Padding(2)
-        FlowLayoutPanel5.Size = New Size(361, 57)
+        FlowLayoutPanel5.Size = New Size(361, 62)
         FlowLayoutPanel5.TabIndex = 15
         ' 
         ' TableLayoutPanel1
         ' 
         TableLayoutPanel1.Anchor = AnchorStyles.Left Or AnchorStyles.Right
-        TableLayoutPanel1.ColumnCount = 2
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel1.Controls.Add(FlowLayoutPanel1, 0, 0)
-        TableLayoutPanel1.Controls.Add(FlowLayoutPanel3, 1, 0)
-        TableLayoutPanel1.Controls.Add(FlowLayoutPanel2, 0, 1)
-        TableLayoutPanel1.Controls.Add(FlowLayoutPanel4, 1, 1)
-        TableLayoutPanel1.Location = New Point(3, 3)
+        TableLayoutPanel1.ColumnCount = 1
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel1.Controls.Add(FlowLayoutPanel5, 0, 3)
+        TableLayoutPanel1.Controls.Add(FlowLayoutPanel2, 0, 2)
+        TableLayoutPanel1.Controls.Add(FlowLayoutPanel1, 0, 1)
+        TableLayoutPanel1.Controls.Add(FlowLayoutPanel3, 0, 0)
+        TableLayoutPanel1.Location = New Point(21, 91)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
-        TableLayoutPanel1.RowCount = 2
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 45.0549469F))
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 54.9450569F))
-        TableLayoutPanel1.Size = New Size(361, 114)
+        TableLayoutPanel1.RowCount = 4
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 25F))
+        TableLayoutPanel1.Size = New Size(367, 266)
         TableLayoutPanel1.TabIndex = 16
         ' 
         ' TableLayoutPanel2
@@ -258,21 +227,21 @@ Partial Class FormRegistrasi
         TableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.OutsetPartial
         TableLayoutPanel2.ColumnCount = 1
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
+        TableLayoutPanel2.Controls.Add(TableLayoutPanel1, 0, 1)
         TableLayoutPanel2.Controls.Add(Label3, 0, 0)
-        TableLayoutPanel2.Controls.Add(TableLayoutPanel3, 0, 1)
         TableLayoutPanel2.Controls.Add(KembaliButton, 0, 3)
         TableLayoutPanel2.Controls.Add(RegistrasiButton, 0, 2)
         TableLayoutPanel2.Dock = DockStyle.Left
         TableLayoutPanel2.Location = New Point(0, 0)
-        TableLayoutPanel2.Margin = New Padding(20)
+        TableLayoutPanel2.Margin = New Padding(20, 23, 20, 23)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
-        TableLayoutPanel2.Padding = New Padding(15)
+        TableLayoutPanel2.Padding = New Padding(15, 17, 15, 17)
         TableLayoutPanel2.RowCount = 4
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 20.2933979F))
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 48.65526F))
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 8.312959F))
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 24.694376F))
-        TableLayoutPanel2.Size = New Size(409, 442)
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 13.9269409F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 60.8200455F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 9.794989F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 14.8063784F))
+        TableLayoutPanel2.Size = New Size(409, 501)
         TableLayoutPanel2.TabIndex = 17
         ' 
         ' Label3
@@ -280,27 +249,12 @@ Partial Class FormRegistrasi
         Label3.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         Label3.AutoSize = True
         Label3.Font = New Font("Calibri", 20F, FontStyle.Bold)
-        Label3.Location = New Point(21, 41)
+        Label3.Location = New Point(21, 33)
         Label3.Name = "Label3"
-        Label3.Size = New Size(367, 33)
+        Label3.Size = New Size(367, 37)
         Label3.TabIndex = 18
         Label3.Text = "Registrasi"
         Label3.TextAlign = ContentAlignment.TopCenter
-        ' 
-        ' TableLayoutPanel3
-        ' 
-        TableLayoutPanel3.Anchor = AnchorStyles.Left Or AnchorStyles.Right
-        TableLayoutPanel3.ColumnCount = 1
-        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
-        TableLayoutPanel3.Controls.Add(FlowLayoutPanel5, 0, 1)
-        TableLayoutPanel3.Controls.Add(TableLayoutPanel1, 0, 0)
-        TableLayoutPanel3.Location = New Point(21, 103)
-        TableLayoutPanel3.Name = "TableLayoutPanel3"
-        TableLayoutPanel3.RowCount = 2
-        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 65.665F))
-        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 34.335F))
-        TableLayoutPanel3.Size = New Size(367, 183)
-        TableLayoutPanel3.TabIndex = 18
         ' 
         ' TableLayoutPanel5
         ' 
@@ -308,12 +262,12 @@ Partial Class FormRegistrasi
         TableLayoutPanel5.ColumnCount = 2
         TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel5.Location = New Point(295, 283)
+        TableLayoutPanel5.Location = New Point(295, 321)
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 2
         TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel5.Size = New Size(354, 186)
+        TableLayoutPanel5.Size = New Size(354, 211)
         TableLayoutPanel5.TabIndex = 18
         ' 
         ' TableLayoutPanel6
@@ -327,7 +281,7 @@ Partial Class FormRegistrasi
         TableLayoutPanel6.RowCount = 2
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel6.Size = New Size(445, 100)
+        TableLayoutPanel6.Size = New Size(445, 113)
         TableLayoutPanel6.TabIndex = 19
         ' 
         ' TableLayoutPanel4
@@ -341,7 +295,7 @@ Partial Class FormRegistrasi
         TableLayoutPanel4.RowCount = 2
         TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel4.Size = New Size(354, 186)
+        TableLayoutPanel4.Size = New Size(354, 211)
         TableLayoutPanel4.TabIndex = 20
         ' 
         ' TableLayoutPanel7
@@ -350,20 +304,20 @@ Partial Class FormRegistrasi
         TableLayoutPanel7.ColumnCount = 2
         TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel7.Location = New Point(346, 122)
+        TableLayoutPanel7.Location = New Point(346, 138)
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 2
         TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel7.Size = New Size(445, 100)
+        TableLayoutPanel7.Size = New Size(445, 113)
         TableLayoutPanel7.TabIndex = 21
         ' 
         ' FormRegistrasi
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.CornflowerBlue
-        ClientSize = New Size(790, 442)
+        ClientSize = New Size(790, 501)
         Controls.Add(TableLayoutPanel2)
         Controls.Add(TableLayoutPanel5)
         Controls.Add(TableLayoutPanel6)
@@ -379,14 +333,11 @@ Partial Class FormRegistrasi
         FlowLayoutPanel2.PerformLayout()
         FlowLayoutPanel3.ResumeLayout(False)
         FlowLayoutPanel3.PerformLayout()
-        FlowLayoutPanel4.ResumeLayout(False)
-        FlowLayoutPanel4.PerformLayout()
         FlowLayoutPanel5.ResumeLayout(False)
         FlowLayoutPanel5.PerformLayout()
         TableLayoutPanel1.ResumeLayout(False)
         TableLayoutPanel2.ResumeLayout(False)
         TableLayoutPanel2.PerformLayout()
-        TableLayoutPanel3.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -401,16 +352,12 @@ Partial Class FormRegistrasi
     Friend WithEvents NIMTextBox As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PasswordTextBox As TextBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents RoleComboBox As ComboBox
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel3 As FlowLayoutPanel
-    Friend WithEvents FlowLayoutPanel4 As FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel5 As FlowLayoutPanel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
-    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Label3 As Label
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel6 As TableLayoutPanel

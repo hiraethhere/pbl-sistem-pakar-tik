@@ -1,6 +1,5 @@
 ﻿Module Module3
-    Public LoggedNIM As String
-    Public LoggedNama As String
-    Public LoggedProdi As String
-    Public LoggedRole As String
+    Public NIMMahasiswa As String
+    Public NamaMahasiswa As String
+    Public ProdiMahasiswa As String
 End Module

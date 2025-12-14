@@ -56,13 +56,13 @@ Partial Class FormPertanyaanCF
         lblNoSoal.Anchor = AnchorStyles.Left
         lblNoSoal.AutoSize = True
         lblNoSoal.BackColor = SystemColors.Highlight
-        lblNoSoal.Font = New Font("Poppins", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblNoSoal.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblNoSoal.ForeColor = Color.AliceBlue
-        lblNoSoal.Location = New Point(21, 20)
+        lblNoSoal.Location = New Point(21, 25)
         lblNoSoal.Margin = New Padding(8, 0, 3, 0)
         lblNoSoal.Name = "lblNoSoal"
         lblNoSoal.Padding = New Padding(5)
-        lblNoSoal.Size = New Size(121, 29)
+        lblNoSoal.Size = New Size(130, 26)
         lblNoSoal.TabIndex = 0
         lblNoSoal.Text = "Nomor Pertanyaan"
         ' 
@@ -72,10 +72,10 @@ Partial Class FormPertanyaanCF
         lblPertanyaan.AutoSize = True
         lblPertanyaan.Font = New Font("Calibri", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPertanyaan.ForeColor = Color.Black
-        lblPertanyaan.Location = New Point(16, 60)
+        lblPertanyaan.Location = New Point(16, 67)
         lblPertanyaan.Name = "lblPertanyaan"
         lblPertanyaan.Padding = New Padding(5)
-        lblPertanyaan.Size = New Size(677, 28)
+        lblPertanyaan.Size = New Size(677, 31)
         lblPertanyaan.TabIndex = 0
         lblPertanyaan.Text = "Pertanyaan"
         ' 
@@ -90,13 +90,13 @@ Partial Class FormPertanyaanCF
         rbA.FlatAppearance.MouseDownBackColor = Color.Red
         rbA.FlatAppearance.MouseOverBackColor = Color.Red
         rbA.FlatStyle = FlatStyle.Flat
-        rbA.Font = New Font("Calibri", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        rbA.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         rbA.ForeColor = SystemColors.ControlDarkDark
-        rbA.Location = New Point(6, 9)
+        rbA.Location = New Point(6, 7)
         rbA.Margin = New Padding(3, 4, 3, 4)
         rbA.Name = "rbA"
         rbA.Padding = New Padding(10)
-        rbA.Size = New Size(123, 50)
+        rbA.Size = New Size(123, 54)
         rbA.TabIndex = 1
         rbA.Text = "Sangat Kurang"
         rbA.TextAlign = ContentAlignment.MiddleCenter
@@ -113,13 +113,13 @@ Partial Class FormPertanyaanCF
         rbB.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(0), CByte(192), CByte(192))
         rbB.FlatAppearance.MouseOverBackColor = Color.Teal
         rbB.FlatStyle = FlatStyle.Flat
-        rbB.Font = New Font("Calibri", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        rbB.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         rbB.ForeColor = SystemColors.ControlDarkDark
-        rbB.Location = New Point(138, 9)
+        rbB.Location = New Point(138, 7)
         rbB.Margin = New Padding(3, 4, 3, 4)
         rbB.Name = "rbB"
         rbB.Padding = New Padding(10)
-        rbB.Size = New Size(123, 50)
+        rbB.Size = New Size(123, 54)
         rbB.TabIndex = 1
         rbB.Text = "Kurang"
         rbB.TextAlign = ContentAlignment.MiddleCenter
@@ -136,13 +136,13 @@ Partial Class FormPertanyaanCF
         rbC.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(192), CByte(0), CByte(192))
         rbC.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(64), CByte(0), CByte(64))
         rbC.FlatStyle = FlatStyle.Flat
-        rbC.Font = New Font("Calibri", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        rbC.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         rbC.ForeColor = SystemColors.ControlDarkDark
-        rbC.Location = New Point(270, 9)
+        rbC.Location = New Point(270, 7)
         rbC.Margin = New Padding(3, 4, 3, 4)
         rbC.Name = "rbC"
         rbC.Padding = New Padding(10)
-        rbC.Size = New Size(123, 50)
+        rbC.Size = New Size(123, 54)
         rbC.TabIndex = 1
         rbC.Text = "Cukup"
         rbC.TextAlign = ContentAlignment.MiddleCenter
@@ -159,13 +159,13 @@ Partial Class FormPertanyaanCF
         rbD.FlatAppearance.MouseDownBackColor = Color.Blue
         rbD.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(0), CByte(0), CByte(192))
         rbD.FlatStyle = FlatStyle.Flat
-        rbD.Font = New Font("Calibri", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        rbD.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         rbD.ForeColor = SystemColors.ControlDarkDark
-        rbD.Location = New Point(402, 9)
+        rbD.Location = New Point(402, 7)
         rbD.Margin = New Padding(3, 4, 3, 4)
         rbD.Name = "rbD"
         rbD.Padding = New Padding(10)
-        rbD.Size = New Size(123, 50)
+        rbD.Size = New Size(123, 54)
         rbD.TabIndex = 1
         rbD.Text = "Baik"
         rbD.TextAlign = ContentAlignment.MiddleCenter
@@ -182,13 +182,13 @@ Partial Class FormPertanyaanCF
         rbE.FlatAppearance.MouseDownBackColor = Color.Lime
         rbE.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(255), CByte(255), CByte(192))
         rbE.FlatStyle = FlatStyle.Flat
-        rbE.Font = New Font("Calibri", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        rbE.Font = New Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         rbE.ForeColor = SystemColors.ControlDarkDark
-        rbE.Location = New Point(534, 9)
+        rbE.Location = New Point(534, 7)
         rbE.Margin = New Padding(3, 4, 3, 4)
         rbE.Name = "rbE"
         rbE.Padding = New Padding(10)
-        rbE.Size = New Size(123, 50)
+        rbE.Size = New Size(123, 54)
         rbE.TabIndex = 1
         rbE.Text = "Sangat Baik"
         rbE.TextAlign = ContentAlignment.MiddleCenter
@@ -199,9 +199,9 @@ Partial Class FormPertanyaanCF
         btnLanjut.BackColor = Color.FromArgb(CByte(128), CByte(255), CByte(128))
         btnLanjut.Cursor = Cursors.Hand
         btnLanjut.FlatStyle = FlatStyle.Popup
-        btnLanjut.Font = New Font("Calibri", 12.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnLanjut.Font = New Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnLanjut.ForeColor = Color.Black
-        btnLanjut.Location = New Point(607, 381)
+        btnLanjut.Location = New Point(607, 419)
         btnLanjut.Margin = New Padding(3, 4, 3, 4)
         btnLanjut.Name = "btnLanjut"
         btnLanjut.Size = New Size(155, 34)
@@ -213,10 +213,10 @@ Partial Class FormPertanyaanCF
         ' 
         lblNamaMhs.Anchor = AnchorStyles.Left
         lblNamaMhs.AutoSize = True
-        lblNamaMhs.Font = New Font("Poppins", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblNamaMhs.Location = New Point(6, 7)
+        lblNamaMhs.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblNamaMhs.Location = New Point(6, 9)
         lblNamaMhs.Name = "lblNamaMhs"
-        lblNamaMhs.Size = New Size(79, 22)
+        lblNamaMhs.Size = New Size(86, 17)
         lblNamaMhs.TabIndex = 4
         lblNamaMhs.Text = "Nama: Reza"
         ' 
@@ -229,10 +229,10 @@ Partial Class FormPertanyaanCF
         ' 
         lblWaktu.Anchor = AnchorStyles.Right
         lblWaktu.AutoSize = True
-        lblWaktu.Font = New Font("Poppins", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblWaktu.Location = New Point(634, 7)
+        lblWaktu.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblWaktu.Location = New Point(628, 9)
         lblWaktu.Name = "lblWaktu"
-        lblWaktu.Size = New Size(82, 22)
+        lblWaktu.Size = New Size(88, 17)
         lblWaktu.TabIndex = 5
         lblWaktu.Text = "Timer: 30:00"
         ' 
@@ -243,22 +243,22 @@ Partial Class FormPertanyaanCF
         TableLayoutPanel2.BackgroundImageLayout = ImageLayout.None
         TableLayoutPanel2.CellBorderStyle = TableLayoutPanelCellBorderStyle.OutsetPartial
         TableLayoutPanel2.ColumnCount = 5
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
-        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20.0F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
+        TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 20F))
         TableLayoutPanel2.Controls.Add(rbE, 4, 0)
         TableLayoutPanel2.Controls.Add(rbD, 3, 0)
         TableLayoutPanel2.Controls.Add(rbC, 2, 0)
         TableLayoutPanel2.Controls.Add(rbB, 1, 0)
         TableLayoutPanel2.Controls.Add(rbA, 0, 0)
         TableLayoutPanel2.GrowStyle = TableLayoutPanelGrowStyle.AddColumns
-        TableLayoutPanel2.Location = New Point(23, 153)
+        TableLayoutPanel2.Location = New Point(23, 179)
         TableLayoutPanel2.Margin = New Padding(10)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 1
-        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 100.0F))
+        TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 100F))
         TableLayoutPanel2.Size = New Size(663, 68)
         TableLayoutPanel2.TabIndex = 7
         ' 
@@ -266,15 +266,15 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.OutsetPartial
         TableLayoutPanel1.ColumnCount = 2
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel1.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel1.Controls.Add(lblNamaMhs, 0, 0)
         TableLayoutPanel1.Controls.Add(lblWaktu, 1, 0)
         TableLayoutPanel1.ForeColor = Color.White
         TableLayoutPanel1.Location = New Point(40, 22)
         TableLayoutPanel1.Name = "TableLayoutPanel1"
         TableLayoutPanel1.RowCount = 1
-        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel1.Size = New Size(722, 36)
         TableLayoutPanel1.TabIndex = 8
         ' 
@@ -284,7 +284,7 @@ Partial Class FormPertanyaanCF
         TableLayoutPanel3.BackColor = Color.AliceBlue
         TableLayoutPanel3.CellBorderStyle = TableLayoutPanelCellBorderStyle.OutsetPartial
         TableLayoutPanel3.ColumnCount = 1
-        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100.0F))
+        TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 100F))
         TableLayoutPanel3.Controls.Add(lblNoSoal, 0, 0)
         TableLayoutPanel3.Controls.Add(lblPertanyaan, 0, 1)
         TableLayoutPanel3.Controls.Add(TableLayoutPanel2, 0, 2)
@@ -295,9 +295,9 @@ Partial Class FormPertanyaanCF
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 20.434782F))
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 35.217392F))
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 44.3478279F))
-        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Absolute, 20.0F))
-        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Absolute, 20.0F))
-        TableLayoutPanel3.Size = New Size(709, 248)
+        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
+        TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Absolute, 20F))
+        TableLayoutPanel3.Size = New Size(709, 282)
         TableLayoutPanel3.TabIndex = 9
         ' 
         ' FlowLayoutPanel1
@@ -310,20 +310,20 @@ Partial Class FormPertanyaanCF
         FlowLayoutPanel1.Location = New Point(40, 90)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         FlowLayoutPanel1.Padding = New Padding(2)
-        FlowLayoutPanel1.Size = New Size(722, 262)
+        FlowLayoutPanel1.Size = New Size(722, 297)
         FlowLayoutPanel1.TabIndex = 10
         ' 
         ' TableLayoutPanel8
         ' 
         TableLayoutPanel8.BackColor = Color.SkyBlue
         TableLayoutPanel8.ColumnCount = 2
-        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel8.Location = New Point(56, 327)
         TableLayoutPanel8.Name = "TableLayoutPanel8"
         TableLayoutPanel8.RowCount = 2
-        TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 61.0F))
-        TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 39.0F))
+        TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 61F))
+        TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 39F))
         TableLayoutPanel8.Size = New Size(107, 100)
         TableLayoutPanel8.TabIndex = 17
         ' 
@@ -331,13 +331,13 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel4.BackColor = Color.PowderBlue
         TableLayoutPanel4.ColumnCount = 2
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.Location = New Point(-48, 384)
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 2
-        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.Size = New Size(556, 117)
         TableLayoutPanel4.TabIndex = 14
         ' 
@@ -345,13 +345,13 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel5.BackColor = Color.DeepSkyBlue
         TableLayoutPanel5.ColumnCount = 2
-        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.Location = New Point(-79, 201)
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 2
-        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.Size = New Size(354, 119)
         TableLayoutPanel5.TabIndex = 15
         ' 
@@ -359,13 +359,13 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel6.BackColor = Color.CadetBlue
         TableLayoutPanel6.ColumnCount = 2
-        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.Location = New Point(535, 249)
         TableLayoutPanel6.Name = "TableLayoutPanel6"
         TableLayoutPanel6.RowCount = 2
-        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.Size = New Size(334, 186)
         TableLayoutPanel6.TabIndex = 16
         ' 
@@ -373,13 +373,13 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel7.BackColor = Color.SkyBlue
         TableLayoutPanel7.ColumnCount = 2
-        TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel7.Location = New Point(193, -46)
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 2
-        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel7.Size = New Size(107, 62)
         TableLayoutPanel7.TabIndex = 18
         ' 
@@ -387,13 +387,13 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel9.BackColor = Color.LightBlue
         TableLayoutPanel9.ColumnCount = 2
-        TableLayoutPanel9.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel9.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel9.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel9.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel9.Location = New Point(-76, 36)
         TableLayoutPanel9.Name = "TableLayoutPanel9"
         TableLayoutPanel9.RowCount = 2
-        TableLayoutPanel9.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel9.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel9.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel9.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel9.Size = New Size(445, 100)
         TableLayoutPanel9.TabIndex = 19
         ' 
@@ -401,22 +401,22 @@ Partial Class FormPertanyaanCF
         ' 
         TableLayoutPanel10.BackColor = Color.PowderBlue
         TableLayoutPanel10.ColumnCount = 2
-        TableLayoutPanel10.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel10.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel10.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
+        TableLayoutPanel10.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel10.Location = New Point(501, -46)
         TableLayoutPanel10.Name = "TableLayoutPanel10"
         TableLayoutPanel10.RowCount = 2
-        TableLayoutPanel10.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
-        TableLayoutPanel10.RowStyles.Add(New RowStyle(SizeType.Percent, 50.0F))
+        TableLayoutPanel10.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
+        TableLayoutPanel10.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel10.Size = New Size(354, 186)
         TableLayoutPanel10.TabIndex = 20
         ' 
         ' FormPertanyaanCF
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 22.0F)
+        AutoScaleDimensions = New SizeF(9F, 16F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.CornflowerBlue
-        ClientSize = New Size(790, 442)
+        ClientSize = New Size(790, 477)
         Controls.Add(FlowLayoutPanel1)
         Controls.Add(TableLayoutPanel1)
         Controls.Add(btnLanjut)
@@ -427,7 +427,7 @@ Partial Class FormPertanyaanCF
         Controls.Add(TableLayoutPanel7)
         Controls.Add(TableLayoutPanel9)
         Controls.Add(TableLayoutPanel10)
-        Font = New Font("Poppins SemiBold", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         FormBorderStyle = FormBorderStyle.FixedDialog
         Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False

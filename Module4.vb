@@ -23,7 +23,7 @@ Module Hasil
             ' Langsung hapus semua milik user ini.
             Dim queryDelete As String = "DELETE FROM hasil WHERE user_id = @userId"
             Using cmdDelete As New SqlCommand(queryDelete, ModuleKoneksi.conn, transaction)
-                cmdDelete.Parameters.AddWithValue("@userId", LoggedNIM)
+                cmdDelete.Parameters.AddWithValue("@userId", NIMMahasiswa)
                 cmdDelete.ExecuteNonQuery()
             End Using
 
@@ -34,7 +34,7 @@ Module Hasil
 
             For Each item In hasil
                 Using cmdInsert As New SqlCommand(queryInsert, ModuleKoneksi.conn, transaction)
-                    cmdInsert.Parameters.AddWithValue("@userId", LoggedNIM)
+                    cmdInsert.Parameters.AddWithValue("@userId", NIMMahasiswa)
                     cmdInsert.Parameters.AddWithValue("@profilId", item.profile)
                     cmdInsert.Parameters.AddWithValue("@persentase", item.persentage)
                     cmdInsert.ExecuteNonQuery()

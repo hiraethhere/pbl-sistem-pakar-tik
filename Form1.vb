@@ -50,18 +50,16 @@ Public Class FormLogin
             MessageBox.Show("Login Berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
             IsNavigatingAway = True
             If role = "Mahasiswa" Then
-                LoggedNIM = NIMTextBox.Text.Trim()
-                LoggedNama = AmbilNama(LoggedNIM)
-                LoggedProdi = AmbilProdi(LoggedNIM)
-                LoggedRole = role
+                NIMMahasiswa = NIMTextBox.Text.Trim()
+                NamaMahasiswa = AmbilNama(NIMMahasiswa)
+                ProdiMahasiswa = AmbilProdi(NIMMahasiswa)
                 DashboardMahasiswa.Show()
                 Me.Close()
             ElseIf role = "Dosen" Then
                 DashboardDosen.Show()
                 Me.Close()
             Else
-                MessageBox.Show("Role tidak dikenali.
-Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Role tidak dikenali. Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
 
@@ -101,10 +99,6 @@ Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub FormDataDiri_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'ProdiComboBox.Items.Add("TI")
-        'ProdiComboBox.Items.Add("TMJ")
-        'ProdiComboBox.Items.Add("TMD")
-
         PasswordTextBox.PasswordChar = "*"
     End Sub
 

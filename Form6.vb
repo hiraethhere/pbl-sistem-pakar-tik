@@ -14,9 +14,9 @@ Public Class DashboardMahasiswa
         ProdiComboBox.Items.Add("TMJ")
         ProdiComboBox.Items.Add("TMD")
 
-        NamaTextBox.Text = LoggedNama
-        NIMTextBox.Text = LoggedNIM
-        ProdiComboBox.Text = LoggedProdi
+        NamaTextBox.Text = NamaMahasiswa
+        NIMTextBox.Text = NIMMahasiswa
+        ProdiComboBox.Text = ProdiMahasiswa
 
         NamaTextBox.ReadOnly = True
         NIMTextBox.ReadOnly = True
@@ -52,7 +52,7 @@ Public Class DashboardMahasiswa
     End Function
 
     Private Sub TampilkanHasilRekomendasi()
-        Dim results As List(Of Tuple(Of String, Double)) = Hasil.AmbilHasilTerakhir(LoggedNIM)
+        Dim results As List(Of Tuple(Of String, Double)) = Hasil.AmbilHasilTerakhir(NIMMahasiswa)
 
         If ChartHasil Is Nothing Then
             GroupBox1.Text = "Error: Chart tidak termuat."
@@ -110,10 +110,9 @@ Public Class DashboardMahasiswa
     End Sub
 
     Private Sub LogOutButton_Click(sender As Object, e As EventArgs) Handles LogOutButton.Click
-        LoggedNIM = Nothing
-        LoggedNama = Nothing
-        LoggedProdi = Nothing
-        LoggedRole = Nothing
+        NIMMahasiswa = Nothing
+        NamaMahasiswa = Nothing
+        ProdiMahasiswa = Nothing
 
         Dim FormLogin As New FormLogin()
         FormLogin.Show()

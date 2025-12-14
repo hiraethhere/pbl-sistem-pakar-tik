@@ -47,9 +47,9 @@ Partial Class FormHasil
         lblProfil.Anchor = AnchorStyles.Left Or AnchorStyles.Right
         lblProfil.AutoSize = True
         lblProfil.Font = New Font("Calibri", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblProfil.Location = New Point(6, 48)
+        lblProfil.Location = New Point(6, 54)
         lblProfil.Name = "lblProfil"
-        lblProfil.Size = New Size(647, 26)
+        lblProfil.Size = New Size(647, 29)
         lblProfil.TabIndex = 0
         lblProfil.Text = "Profil Lulusan"
         lblProfil.TextAlign = ContentAlignment.MiddleCenter
@@ -61,11 +61,11 @@ Partial Class FormHasil
         lblNilaiCF.BackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
         lblNilaiCF.Font = New Font("Calibri", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblNilaiCF.ForeColor = Color.Green
-        lblNilaiCF.Location = New Point(6, 93)
-        lblNilaiCF.Margin = New Padding(3, 10, 3, 0)
+        lblNilaiCF.Location = New Point(6, 104)
+        lblNilaiCF.Margin = New Padding(3, 11, 3, 0)
         lblNilaiCF.Name = "lblNilaiCF"
-        lblNilaiCF.Padding = New Padding(10)
-        lblNilaiCF.Size = New Size(647, 39)
+        lblNilaiCF.Padding = New Padding(10, 11, 10, 11)
+        lblNilaiCF.Size = New Size(647, 44)
         lblNilaiCF.TabIndex = 0
         lblNilaiCF.Text = "Nilai CF"
         lblNilaiCF.TextAlign = ContentAlignment.MiddleCenter
@@ -76,13 +76,13 @@ Partial Class FormHasil
         btnTestLagi.BackColor = Color.FromArgb(CByte(192), CByte(255), CByte(192))
         btnTestLagi.Cursor = Cursors.Hand
         btnTestLagi.FlatStyle = FlatStyle.Popup
-        btnTestLagi.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnTestLagi.Location = New Point(338, 10)
+        btnTestLagi.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnTestLagi.Location = New Point(338, 11)
         btnTestLagi.Name = "btnTestLagi"
-        btnTestLagi.Padding = New Padding(5)
-        btnTestLagi.Size = New Size(326, 35)
+        btnTestLagi.Padding = New Padding(5, 6, 5, 6)
+        btnTestLagi.Size = New Size(326, 40)
         btnTestLagi.TabIndex = 1
-        btnTestLagi.Text = "Coba lagi"
+        btnTestLagi.Text = "Kembali ke Dashboard"
         btnTestLagi.UseVisualStyleBackColor = False
         ' 
         ' btnKeluarAplikasi
@@ -91,13 +91,13 @@ Partial Class FormHasil
         btnKeluarAplikasi.BackColor = Color.DarkSalmon
         btnKeluarAplikasi.Cursor = Cursors.Hand
         btnKeluarAplikasi.FlatStyle = FlatStyle.Popup
-        btnKeluarAplikasi.Font = New Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        btnKeluarAplikasi.Location = New Point(3, 10)
+        btnKeluarAplikasi.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        btnKeluarAplikasi.Location = New Point(3, 11)
         btnKeluarAplikasi.Name = "btnKeluarAplikasi"
-        btnKeluarAplikasi.Padding = New Padding(5)
-        btnKeluarAplikasi.Size = New Size(329, 35)
+        btnKeluarAplikasi.Padding = New Padding(5, 6, 5, 6)
+        btnKeluarAplikasi.Size = New Size(329, 40)
         btnKeluarAplikasi.TabIndex = 2
-        btnKeluarAplikasi.Text = "Keluar"
+        btnKeluarAplikasi.Text = "Logout"
         btnKeluarAplikasi.UseVisualStyleBackColor = False
         ' 
         ' Cocok
@@ -106,9 +106,9 @@ Partial Class FormHasil
         Cocok.AutoSize = True
         Cocok.Font = New Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Cocok.ForeColor = Color.DarkGreen
-        Cocok.Location = New Point(6, 14)
+        Cocok.Location = New Point(6, 15)
         Cocok.Name = "Cocok"
-        Cocok.Size = New Size(647, 14)
+        Cocok.Size = New Size(647, 17)
         Cocok.TabIndex = 0
         Cocok.Text = "REKOMENDASI UTAMA"
         Cocok.TextAlign = ContentAlignment.MiddleCenter
@@ -129,7 +129,7 @@ Partial Class FormHasil
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 14.9779739F))
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 15.8590307F))
         TableLayoutPanel1.RowStyles.Add(New RowStyle(SizeType.Percent, 68.7224655F))
-        TableLayoutPanel1.Size = New Size(659, 253)
+        TableLayoutPanel1.Size = New Size(659, 288)
         TableLayoutPanel1.TabIndex = 3
         ' 
         ' TableLayoutPanel2
@@ -139,11 +139,11 @@ Partial Class FormHasil
         TableLayoutPanel2.ColumnCount = 1
         TableLayoutPanel2.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel2.Controls.Add(TableLayoutPanel1, 0, 0)
-        TableLayoutPanel2.Location = New Point(59, 47)
+        TableLayoutPanel2.Location = New Point(59, 53)
         TableLayoutPanel2.Name = "TableLayoutPanel2"
         TableLayoutPanel2.RowCount = 1
         TableLayoutPanel2.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel2.Size = New Size(667, 261)
+        TableLayoutPanel2.Size = New Size(667, 296)
         TableLayoutPanel2.TabIndex = 4
         ' 
         ' TableLayoutPanel3
@@ -154,11 +154,11 @@ Partial Class FormHasil
         TableLayoutPanel3.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 49.7751122F))
         TableLayoutPanel3.Controls.Add(btnKeluarAplikasi, 0, 0)
         TableLayoutPanel3.Controls.Add(btnTestLagi, 1, 0)
-        TableLayoutPanel3.Location = New Point(59, 336)
+        TableLayoutPanel3.Location = New Point(59, 381)
         TableLayoutPanel3.Name = "TableLayoutPanel3"
         TableLayoutPanel3.RowCount = 1
         TableLayoutPanel3.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel3.Size = New Size(667, 56)
+        TableLayoutPanel3.Size = New Size(667, 63)
         TableLayoutPanel3.TabIndex = 5
         ' 
         ' TableLayoutPanel8
@@ -167,12 +167,12 @@ Partial Class FormHasil
         TableLayoutPanel8.ColumnCount = 2
         TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel8.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel8.Location = New Point(750, 177)
+        TableLayoutPanel8.Location = New Point(750, 201)
         TableLayoutPanel8.Name = "TableLayoutPanel8"
         TableLayoutPanel8.RowCount = 2
         TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 61F))
         TableLayoutPanel8.RowStyles.Add(New RowStyle(SizeType.Percent, 39F))
-        TableLayoutPanel8.Size = New Size(107, 100)
+        TableLayoutPanel8.Size = New Size(107, 113)
         TableLayoutPanel8.TabIndex = 24
         ' 
         ' TableLayoutPanel4
@@ -181,12 +181,12 @@ Partial Class FormHasil
         TableLayoutPanel4.ColumnCount = 2
         TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel4.Location = New Point(-48, 404)
+        TableLayoutPanel4.Location = New Point(-48, 458)
         TableLayoutPanel4.Name = "TableLayoutPanel4"
         TableLayoutPanel4.RowCount = 2
         TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel4.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel4.Size = New Size(556, 117)
+        TableLayoutPanel4.Size = New Size(556, 133)
         TableLayoutPanel4.TabIndex = 21
         ' 
         ' TableLayoutPanel5
@@ -195,12 +195,12 @@ Partial Class FormHasil
         TableLayoutPanel5.ColumnCount = 2
         TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel5.Location = New Point(-79, 204)
+        TableLayoutPanel5.Location = New Point(-79, 231)
         TableLayoutPanel5.Name = "TableLayoutPanel5"
         TableLayoutPanel5.RowCount = 2
         TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel5.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel5.Size = New Size(354, 119)
+        TableLayoutPanel5.Size = New Size(354, 135)
         TableLayoutPanel5.TabIndex = 22
         ' 
         ' TableLayoutPanel6
@@ -209,12 +209,12 @@ Partial Class FormHasil
         TableLayoutPanel6.ColumnCount = 2
         TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel6.Location = New Point(731, 253)
+        TableLayoutPanel6.Location = New Point(731, 287)
         TableLayoutPanel6.Name = "TableLayoutPanel6"
         TableLayoutPanel6.RowCount = 2
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel6.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel6.Size = New Size(334, 186)
+        TableLayoutPanel6.Size = New Size(334, 211)
         TableLayoutPanel6.TabIndex = 23
         ' 
         ' TableLayoutPanel7
@@ -223,12 +223,12 @@ Partial Class FormHasil
         TableLayoutPanel7.ColumnCount = 2
         TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel7.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel7.Location = New Point(226, -41)
+        TableLayoutPanel7.Location = New Point(226, -46)
         TableLayoutPanel7.Name = "TableLayoutPanel7"
         TableLayoutPanel7.RowCount = 2
         TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel7.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel7.Size = New Size(107, 62)
+        TableLayoutPanel7.Size = New Size(107, 70)
         TableLayoutPanel7.TabIndex = 25
         ' 
         ' TableLayoutPanel9
@@ -237,12 +237,12 @@ Partial Class FormHasil
         TableLayoutPanel9.ColumnCount = 2
         TableLayoutPanel9.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel9.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel9.Location = New Point(-76, 39)
+        TableLayoutPanel9.Location = New Point(-76, 44)
         TableLayoutPanel9.Name = "TableLayoutPanel9"
         TableLayoutPanel9.RowCount = 2
         TableLayoutPanel9.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel9.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel9.Size = New Size(445, 100)
+        TableLayoutPanel9.Size = New Size(445, 113)
         TableLayoutPanel9.TabIndex = 26
         ' 
         ' TableLayoutPanel10
@@ -251,20 +251,20 @@ Partial Class FormHasil
         TableLayoutPanel10.ColumnCount = 2
         TableLayoutPanel10.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
         TableLayoutPanel10.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 50F))
-        TableLayoutPanel10.Location = New Point(501, -52)
+        TableLayoutPanel10.Location = New Point(501, -59)
         TableLayoutPanel10.Name = "TableLayoutPanel10"
         TableLayoutPanel10.RowCount = 2
         TableLayoutPanel10.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
         TableLayoutPanel10.RowStyles.Add(New RowStyle(SizeType.Percent, 50F))
-        TableLayoutPanel10.Size = New Size(354, 186)
+        TableLayoutPanel10.Size = New Size(354, 211)
         TableLayoutPanel10.TabIndex = 27
         ' 
         ' FormHasil
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.CornflowerBlue
-        ClientSize = New Size(790, 442)
+        ClientSize = New Size(790, 501)
         Controls.Add(TableLayoutPanel3)
         Controls.Add(TableLayoutPanel2)
         Controls.Add(TableLayoutPanel8)
