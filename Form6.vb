@@ -124,4 +124,92 @@ Public Class DashboardMahasiswa
         formPertanyaan.Show()
         Me.Hide() ' Sembunyikan Form Data Diri
     End Sub
+
+    Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles PrintButton.Click
+        PrintPreviewDialog1.Document = PrintDocument1
+
+        Dim ppc As System.Windows.Forms.PrintPreviewControl = Nothing
+
+        ' Cari kontrol PrintPreviewControl (indeks 0)
+        If PrintPreviewDialog1.Controls.Count > 0 AndAlso TypeOf PrintPreviewDialog1.Controls(0) Is System.Windows.Forms.PrintPreviewControl Then
+            ppc = CType(PrintPreviewDialog1.Controls(0), System.Windows.Forms.PrintPreviewControl)
+        End If
+
+        If ppc IsNot Nothing Then
+            ' Pengaturan untuk rendering cepat
+            ppc.UseAntiAlias = False
+            ppc.Zoom = 1.0
+            ppc.InvalidatePreview() ' Memaksa rendering dimulai
+        End If
+
+        ' --- KODE KRUSIAL: MENGATUR WINDOW KE MAXIMIZED (FULLSCREEN) ---
+        PrintPreviewDialog1.WindowState = FormWindowState.Maximized
+        ' ---------------------------------------------------------------
+
+        ' Tampilkan Dialog
+        PrintPreviewDialog1.ShowDialog()
+
+        ' Jika Anda menggunakan solusi agresif sebelumnya, pastikan kode
+        ' untuk menampilkan kembali ToolStrip ada di sini:
+        ' For i As Integer = 1 To PrintPreviewDialog1.Controls.Count - 1
+        '     PrintPreviewDialog1.Controls(i).Visible = True
+        ' Next
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Try
+            ' --- DEFINISI LAYOUT DAN FONT ---
+            Dim g As Graphics = e.Graphics
+            Dim marginX As Integer = 50 ' Margin kiri/kanan
+            Dim currentY As Integer = 50 ' Posisi Y saat ini
+            Dim lineSpacing As Integer = 25
+
+            Dim titleFont As New Font("Arial", 16, FontStyle.Bold)
+            Dim headerFont As New Font("Arial", 12, FontStyle.Bold)
+            Dim normalFont As New Font("Arial", 10)
+
+            ' --- 1. CETAK JUDUL UTAMA ---
+            g.DrawString("LAPORAN HASIL REKOMENDASI PROFESI TIK", titleFont, Brushes.Black, marginX, currentY)
+            currentY += 40
+
+            ' Garis pemisah
+            g.DrawLine(Pens.Gray, marginX, currentY, e.PageBounds.Width - marginX, currentY)
+            currentY += 15
+
+            ' --- 2. CETAK DATA DIRI MAHASISWA ---
+            g.DrawString("DATA MAHASISWA:", headerFont, Brushes.DarkBlue, marginX, currentY)
+            currentY += lineSpacing
+
+            ' Asumsi: NamaMahasiswa, NIMMahasiswa, ProdiMahasiswa tersedia
+            g.DrawString($"Nama: {NamaMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
+            currentY += lineSpacing
+
+            g.DrawString($"NIM: {NIMMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
+            currentY += lineSpacing
+
+            g.DrawString($"Prodi: {ProdiMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
+            currentY += lineSpacing + 20 ' Tambah jarak sebelum chart
+
+            ' --- 3. CETAK CHART HASIL REKOMENDASI (METODE CETAK BERSIH) ---
+            g.DrawString("GRAFIK HASIL REKOMENDASI TERAKHIR:", headerFont, Brushes.DarkBlue, marginX, currentY)
+            currentY += lineSpacing
+
+            ' Tentukan ukuran area chart di halaman cetak (Lebar penuh margin, Tinggi tetap)
+            Dim chartPrintWidth As Integer = e.PageBounds.Width - 2 * marginX
+            Dim chartPrintHeight As Integer = 300 ' Anda bisa menyesuaikan tinggi ini
+
+            Dim chartDrawingArea As New Rectangle(marginX, currentY, chartPrintWidth, chartPrintHeight)
+
+            ' **KODE KRUSIAL BARU:** Merender chart langsung ke Graphics object tanpa DrawToBitmap
+            ChartHasil.Printing.PrintPaint(g, chartDrawingArea)
+
+            currentY += chartPrintHeight + 20
+
+            e.HasMorePages = False
+
+        Catch ex As Exception
+            MessageBox.Show("Terjadi kesalahan saat mencetak: " & ex.Message, "Error Print")
+        End Try
+    End Sub
+
 End Class

@@ -22,6 +22,9 @@ Partial Class HasilMahasiswa
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.PrintButton = New Button()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.PrintPreviewDialog1 = New PrintPreviewDialog()
         Dim chartArea1 As New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim series1 As New System.Windows.Forms.DataVisualization.Charting.Series()
 
@@ -81,6 +84,35 @@ Partial Class HasilMahasiswa
         ' 
         ' FlowLayoutPanel3
         ' 
+
+        ' PrintButton
+        ' 
+        Me.PrintButton.BackColor = Color.LightSteelBlue
+        Me.PrintButton.Cursor = Cursors.Hand
+        Me.PrintButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Me.PrintButton.FlatStyle = FlatStyle.Flat
+        Me.PrintButton.Font = New Font("Calibri", 9.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Me.PrintButton.Location = New Point(154, 365) ' Lokasi Print di samping Tombol Kembali
+        Me.PrintButton.Name = "PrintButton"
+        Me.PrintButton.Size = New Size(117, 45)
+        Me.PrintButton.TabIndex = 30
+        Me.PrintButton.Text = "Cetak Hasil (Print)"
+        Me.PrintButton.UseVisualStyleBackColor = False
+
+        ' PrintPreviewDialog1
+        ' 
+        Me.PrintPreviewDialog1.AutoScrollMargin = New Size(0, 0)
+        Me.PrintPreviewDialog1.AutoScrollMinSize = New Size(0, 0)
+        Me.PrintPreviewDialog1.ClientSize = New Size(400, 300)
+        Me.PrintPreviewDialog1.Document = Me.PrintDocument1
+        Me.PrintPreviewDialog1.Enabled = True
+        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        Me.PrintPreviewDialog1.Visible = False
+
+        ClientSize = New Size(800, 494)
+        Controls.Add(TestRekomendasiButton)
+        Controls.Add(PrintButton)
+        Controls.Add(TableLayoutPanel8)
         FlowLayoutPanel3.BackColor = Color.PowderBlue
         FlowLayoutPanel3.Controls.Add(Label3)
         FlowLayoutPanel3.Controls.Add(ProdiComboBox)
@@ -341,4 +373,7 @@ Partial Class HasilMahasiswa
     Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel7 As TableLayoutPanel
     Friend WithEvents TestRekomendasiButton As Button
+    Friend WithEvents PrintButton As Button
+    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
 End Class
