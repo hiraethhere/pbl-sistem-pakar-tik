@@ -5,7 +5,7 @@ Imports Microsoft.Data.SqlClient
 Module ModuleKoneksi
 
     ' Ganti string koneksi ini sesuai dengan database Anda
-    Public conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\source\repos\SistemPakar1\Database1.mdf;Integrated Security=True")
+    Public conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\sunez\OneDrive\Documents\kuliah\semester3\Visual Studio\project\pbl-sistem-pakar\Database1.mdf;Integrated Security=True")
 
     Public Sub BukaKoneksi()
         If conn.State = ConnectionState.Closed Then
