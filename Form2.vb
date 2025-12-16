@@ -6,14 +6,13 @@ Imports Microsoft.Data.SqlClient
 
 Public Class FormPertanyaanCF
 
-    ' Array untuk menyimpan nilai CF user (14 pertanyaan, index 1-14)
     Dim jawabanCF As New List(Of Input)
     Dim dtPertanyaan As New DataTable
-    Dim indexPertanyaan As Integer = 1 ' Mulai dari pertanyaan ke-1
+    Dim indexPertanyaan As Integer = 1
     Dim NamaMhs As String
     Dim kode As String
-    Dim TotalDetik As Integer = 30 * 60 ' 30 menit * 60 detik
-    ' Constructor untuk menerima Nama dari Form sebelumnya
+    Dim TotalDetik As Integer = 30 * 60
+
     Public Sub New(ByVal nama As String)
         InitializeComponent()
         NamaMhs = nama
@@ -22,7 +21,7 @@ Public Class FormPertanyaanCF
     Private Sub FormPertanyaanCF_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblNamaMhs.Text = "Nama: " & NamaMhs
 
-        ' 1. Ambil pertanyaan dari Database
+
         ModuleKoneksi.BukaKoneksi()
         Dim da As New SqlDataAdapter("SELECT * FROM pertanyaan ORDER BY id", ModuleKoneksi.conn)
         da.Fill(dtPertanyaan)
@@ -33,9 +32,9 @@ Public Class FormPertanyaanCF
     End Sub
 
     Private Sub TimerUjian_Tick(sender As Object, e As EventArgs) Handles TimerUjian.Tick
-        TotalDetik -= 1 ' Kurangi 1 detik
+        TotalDetik -= 1
 
-        ' Hitung menit dan detik untuk ditampilkan
+
         Dim menit As Integer = TotalDetik \ 60
         Dim detik As Integer = TotalDetik Mod 60
 
@@ -45,7 +44,7 @@ Public Class FormPertanyaanCF
             TimerUjian.Stop()
             MessageBox.Show("Waktu pengerjaan telah habis! Anda akan dikembalikan ke Dashboard.", "Waktu Habis", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 
-            ' Kembali ke Dashboard
+
             Dim formDashboard As New FormDashboard()
             formDashboard.Show()
             Me.Close()
@@ -56,7 +55,7 @@ Public Class FormPertanyaanCF
         TimerUjian.Stop()
     End Sub
 
-    ' Tampilkan Pertanyaan Saat Ini
+
     Sub TampilkanPertanyaan()
         If indexPertanyaan <= dtPertanyaan.Rows.Count() Then
             Dim row As DataRow = dtPertanyaan.Rows(indexPertanyaan - 1)
@@ -64,40 +63,39 @@ Public Class FormPertanyaanCF
             lblPertanyaan.Text = row("pertanyaan").ToString()
             kode = row("id")
 
-            ' Reset pilihan Radio Button
+
             rbA.Checked = False : rbB.Checked = False : rbC.Checked = False
             rbD.Checked = False : rbE.Checked = False
         Else
-            ' Semua pertanyaan sudah dijawab, lakukan pemrosesan
+
             ProsesCertaintyFactor()
         End If
     End Sub
 
-    ' Event saat tombol Lanjut diklik
+
     Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles btnLanjut.Click
 
         Dim nilaiCFUser As Double = 0.0
 
-        ' Cek dan ambil nilai CF dari pilihan Radio Button (0.0, 0.4, 0.6, 0.8, 1.0)
         If rbE.Checked Then
-            nilaiCFUser = 1.0 ' Sangat Baik
+            nilaiCFUser = 1.0
         ElseIf rbD.Checked Then
-            nilaiCFUser = 0.8 ' Baik
+            nilaiCFUser = 0.8
         ElseIf rbC.Checked Then
-            nilaiCFUser = 0.6 ' Cukup
+            nilaiCFUser = 0.6
         ElseIf rbB.Checked Then
-            nilaiCFUser = 0.4 ' Kurang
+            nilaiCFUser = 0.4
         ElseIf rbA.Checked Then
-            nilaiCFUser = 0.0 ' Sangat Kurang
+            nilaiCFUser = 0.0
         Else
             MessageBox.Show("Anda harus memilih salah satu jawaban.", "Peringatan")
             Exit Sub
         End If
 
-        ' Simpan nilai CF user untuk pertanyaan saat ini
+
         jawabanCF.Add(New Input(kode, nilaiCFUser))
 
-        ' Lanjut ke pertanyaan berikutnya
+
         indexPertanyaan += 1
         ResetRadioButtonColors()
         TampilkanPertanyaan()
@@ -136,7 +134,6 @@ Public Class FormPertanyaanCF
 
         Dim result As List(Of Result) = HitungHasil(listOfRules)
 
-        ' Redirect ke FormHasil (Form3) dan kirimkan Top 3 hasilnya
         Dim formHasil As New FormHasil(result)
         formHasil.Show()
 
@@ -188,13 +185,11 @@ Public Class FormPertanyaanCF
     End Function
 
 
-    Private ReadOnly HoverColor_A As Color = Color.FromArgb(255, 150, 150) ' Medium Red (Lebih Gelap dari Light Red/Pink)
-    Private ReadOnly HoverColor_B As Color = Color.FromArgb(150, 204, 204) ' Medium Cyan (Lebih Gelap dari Very Light Cyan)
-    Private ReadOnly HoverColor_C As Color = Color.FromArgb(180, 180, 255) ' Medium Lavender (Lebih Gelap dari Light Lavender)
+    Private ReadOnly HoverColor_A As Color = Color.FromArgb(255, 150, 150)
+    Private ReadOnly HoverColor_B As Color = Color.FromArgb(150, 204, 204)
+    Private ReadOnly HoverColor_C As Color = Color.FromArgb(180, 180, 255)
     Private ReadOnly HoverColor_D As Color = Color.FromArgb(100, 150, 230)
-    Private ReadOnly HoverColor_E As Color = Color.FromArgb(100, 200, 100) ' Deeper Green (Lebih Gelap dari Brighter Green)
-
-    ' --- 1. Event Handler untuk MOUSE ENTER (Menggunakan Warna Lebih Gelap) ---
+    Private ReadOnly HoverColor_E As Color = Color.FromArgb(100, 200, 100)
     Private Sub RadioButton_MouseEnter(sender As Object, e As EventArgs) Handles rbA.MouseEnter, rbB.MouseEnter, rbC.MouseEnter, rbD.MouseEnter, rbE.MouseEnter
         Dim rb As RadioButton = CType(sender, RadioButton)
 
@@ -209,8 +204,6 @@ Public Class FormPertanyaanCF
         End If
     End Sub
 
-    ' --- 2. Event Handler untuk MOUSE LEAVE (Mengembalikan Warna Asli) ---
-    ' (Logika ini tetap sama, mengembalikan warna statis yang didefinisikan di Designer.vb)
     Private Sub RadioButton_MouseLeave(sender As Object, e As EventArgs) Handles rbA.MouseLeave, rbB.MouseLeave, rbC.MouseLeave, rbD.MouseLeave, rbE.MouseLeave
         Dim rb As RadioButton = CType(sender, RadioButton)
 
@@ -230,11 +223,8 @@ Public Class FormPertanyaanCF
         Dim rbs() As RadioButton = {rbA, rbB, rbC, rbD, rbE}
 
         For Each rb As RadioButton In rbs
-            ' 1. Hapus status checked (sangat penting untuk pertanyaan baru)
-            rb.Checked = False
 
-            ' 2. Panggil logika MouseLeave secara manual
-            '    Ini memaksa tombol untuk mengambil warna defaultnya kembali.
+            rb.Checked = False
             RadioButton_MouseLeave(rb, EventArgs.Empty)
         Next
     End Sub

@@ -23,7 +23,6 @@ Public Class FormRegistrasi
         Try
             BukaKoneksi()
 
-            ' Cek duplikasi NIM
             Dim cekQuery As String = "SELECT COUNT(*) FROM users WHERE nim = @NIM"
             Dim cekCmd As New SqlCommand(cekQuery, conn)
             cekCmd.Parameters.AddWithValue("@NIM", NIMTextBox.Text.Trim())
@@ -35,10 +34,10 @@ Public Class FormRegistrasi
 
             Dim roleUser = "Mahasiswa"
 
-            ' Hash password sebelum disimpan
+
             Dim hashedPassword As String = HashPassword(PasswordTextBox.Text.Trim())
 
-            ' Insert query
+
             Dim query As String = "INSERT INTO users (nim, nama, prodi, role, password) VALUES (@NIM, @Nama, @Prodi, @Role, @Password)"
             Dim cmd As New SqlCommand(query, conn)
 
@@ -52,14 +51,12 @@ Public Class FormRegistrasi
 
             MessageBox.Show("Registrasi berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Reset input
+
             NamaTextBox.Clear()
             NIMTextBox.Clear()
             ProdiComboBox.SelectedIndex = -1
-            'RoleComboBox.SelectedIndex = -1
             PasswordTextBox.Clear()
 
-            ' Pindah ke dashboard
             FormDashboard.Show()
             Me.Close()
 

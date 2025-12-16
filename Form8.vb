@@ -22,8 +22,8 @@ Public Class HasilMahasiswa
     End Sub
 
     Private Sub HasilMahasiswa_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        'Fungsi ini dipanggil saat form pertama kali dimuat DAN setiap kali
-        ' form muncul kembali setelah form lain disembunyikan/ditutup.
+
+
         TampilkanHasilRekomendasi()
     End Sub
 
@@ -40,7 +40,7 @@ Public Class HasilMahasiswa
                 End If
             End Using
         Catch ex As Exception
-            ' Abaikan error dan kembalikan kode jika gagal
+
         Finally
             ModuleKoneksi.TutupKoneksi()
         End Try
@@ -80,33 +80,33 @@ Public Class HasilMahasiswa
                 ChartHasil.Series("Persentase").Points.AddXY(profileName, percentage)
             Next
 
-            ' Kustomisasi Chart
+
             ChartHasil.Titles.Clear()
             ChartHasil.Titles.Add("Top " & results.Count & " Profil Cocok")
 
-            ' --- PENGATURAN AXIS Y (Interval 5, Maks 100) ---
+
             ChartHasil.ChartAreas(0).AxisY.Title = "Persentase Keyakinan (%)"
             ChartHasil.ChartAreas(0).AxisY.Maximum = 100
 
 
 
-            ' --- PENGATURAN AXIS X (Tidak Miring) ---
-            ChartHasil.ChartAreas(0).AxisX.LabelStyle.Angle = 0 ' <-- Membuat tulisan tidak miring
+
+            ChartHasil.ChartAreas(0).AxisX.LabelStyle.Angle = 0
             ChartHasil.ChartAreas(0).AxisX.Interval = 1
 
-            ChartHasil.ChartAreas(0).AxisY.MajorGrid.Enabled = False     ' <-- Hapus garis horizontal
-            ChartHasil.ChartAreas(0).AxisY.MajorTickMark.Enabled = False ' <-- Hapus garis tick mark vertikal
+            ChartHasil.ChartAreas(0).AxisY.MajorGrid.Enabled = False
+            ChartHasil.ChartAreas(0).AxisY.MajorTickMark.Enabled = False
 
-            ' --- PENGATURAN LABEL PADA BAR ---
+
             Dim columnSeries As System.Windows.Forms.DataVisualization.Charting.Series
             columnSeries = ChartHasil.Series("Persentase")
 
-            columnSeries.IsValueShownAsLabel = True ' <-- Tampilkan label di atas bar
+            columnSeries.IsValueShownAsLabel = True
 
-            ' Gunakan format #VALY untuk menampilkan nilai, tambahkan % dan format tanpa desimal (F0)
+
             columnSeries.LabelFormat = "{F0}%"
             columnSeries.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-            ' -------------------------------------------------------------
+
 
             ChartHasil.Series("Persentase").Color = Color.FromArgb(0, 150, 0)
         Else
@@ -130,22 +130,19 @@ Public Class HasilMahasiswa
             ppc.InvalidatePreview()
         End If
 
-        ' Mengatur WINDOW KE MAXIMIZED (FULLSCREEN)
+
         Me.PrintPreviewDialog1.WindowState = FormWindowState.Maximized
 
-        ' Tampilkan Dialog
+
         Me.PrintPreviewDialog1.ShowDialog()
 
-        ' Jika Anda menyembunyikan toolbar (solusi agresif), tampilkan kembali di sini:
-        ' For i As Integer = 1 To PrintPreviewDialog1.Controls.Count - 1
-        '     PrintPreviewDialog1.Controls(i).Visible = True
-        ' Next
+
 
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
         Try
-            ' --- DEFINISI LAYOUT DAN FONT ---
+
             Dim g As Graphics = e.Graphics
             Dim marginX As Integer = 50
             Dim currentY As Integer = 50
@@ -155,14 +152,14 @@ Public Class HasilMahasiswa
             Dim headerFont As New Font("Arial", 12, FontStyle.Bold)
             Dim normalFont As New Font("Arial", 10)
 
-            ' --- 1. CETAK JUDUL UTAMA ---
+
             g.DrawString("LAPORAN HASIL REKOMENDASI PROFESI TIK", titleFont, Brushes.Black, marginX, currentY)
             currentY += 40
 
             g.DrawLine(Pens.Gray, marginX, currentY, e.PageBounds.Width - marginX, currentY)
             currentY += 15
 
-            ' --- 2. CETAK DATA DIRI MAHASISWA ---
+
             g.DrawString("DATA MAHASISWA:", headerFont, Brushes.DarkBlue, marginX, currentY)
             currentY += lineSpacing
 
@@ -175,7 +172,7 @@ Public Class HasilMahasiswa
             g.DrawString($"Prodi: {ProdiMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
             currentY += lineSpacing + 20
 
-            ' --- 3. CETAK CHART HASIL REKOMENDASI ---
+
             g.DrawString("GRAFIK HASIL REKOMENDASI TERAKHIR:", headerFont, Brushes.DarkBlue, marginX, currentY)
             currentY += lineSpacing
 
@@ -184,7 +181,6 @@ Public Class HasilMahasiswa
 
             Dim chartDrawingArea As New Rectangle(marginX, currentY, chartPrintWidth, chartPrintHeight)
 
-            ' Merender chart langsung ke Graphics object (output bersih)
             Me.ChartHasil.Printing.PrintPaint(g, chartDrawingArea)
 
             currentY += chartPrintHeight + 20

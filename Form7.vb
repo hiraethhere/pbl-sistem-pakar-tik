@@ -51,7 +51,7 @@ Public Class DashboardDosen
         Try
             BukaKoneksi()
 
-            ' Cek apakah NIM sudah ada
+
             Dim cekQuery As String = "SELECT COUNT(*) FROM users WHERE nim = @NIM"
             Dim cekCmd As New SqlCommand(cekQuery, conn)
             cekCmd.Parameters.AddWithValue("@NIM", NIMTextBox.Text.Trim())
@@ -61,10 +61,10 @@ Public Class DashboardDosen
                 Exit Sub
             End If
 
-            ' Hash password sebelum simpan
+
             Dim hashedPassword As String = HashPassword(PasswordTextBox.Text.Trim())
 
-            ' Query insert
+
             Dim query As String = "INSERT INTO users (nim, nama, prodi, role, password) VALUES (@NIM, @Nama, @Prodi, @Role, @Password)"
             Dim cmd As New SqlCommand(query, conn)
 
@@ -78,14 +78,14 @@ Public Class DashboardDosen
 
             MessageBox.Show("Akun berhasil ditambahkan!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Reset input
+
             NamaTextBox.Clear()
             NIMTextBox.Clear()
             ProdiComboBox.SelectedIndex = -1
             RoleComboBox.SelectedIndex = -1
             PasswordTextBox.Clear()
 
-            ' Refresh datagrid
+
             TampilData()
 
         Catch ex As Exception
@@ -98,7 +98,7 @@ Public Class DashboardDosen
 
     Private Sub DataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView.CellContentClick
         Try
-            ' Cegah error saat klik header
+
             If e.RowIndex < 0 Then Exit Sub
 
             Dim row As DataGridViewRow = DataGridView.Rows(e.RowIndex)
@@ -108,7 +108,7 @@ Public Class DashboardDosen
             ProdiComboBox.Text = row.Cells("Prodi").Value.ToString()
             RoleComboBox.Text = row.Cells("Role").Value.ToString()
 
-            ' Password sengaja dikosongkan untuk keamanan
+
             PasswordTextBox.Text = ""
 
         Catch ex As Exception
@@ -138,12 +138,12 @@ Public Class DashboardDosen
 
             Dim query As String
 
-            ' Jika passwordTextBox diisi → update password juga
+
             If PasswordTextBox.Text.Trim() <> "" Then
                 Dim hashedPassword As String = HashPassword(PasswordTextBox.Text.Trim())
                 query = "UPDATE users SET nama=@Nama, Prodi=@Prodi, Role=@Role, password=@Password WHERE nim=@NIM"
             Else
-                ' Jika tidak ada password baru → jangan ubah kolom PasswordHash
+
                 query = "UPDATE users SET nama=@Nama, prodi=@Prodi, role=@Role WHERE nim=@NIM"
             End If
 
@@ -162,10 +162,10 @@ Public Class DashboardDosen
 
             MessageBox.Show("Data berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Refresh tabel
+
             TampilData()
 
-            ' Reset input
+
             PasswordTextBox.Clear()
 
         Catch ex As Exception
@@ -177,13 +177,13 @@ Public Class DashboardDosen
     End Sub
 
     Private Sub HapusButton_Click(sender As Object, e As EventArgs) Handles HapusButton.Click
-        ' Pastikan NIM harus terisi
+
         If NIMTextBox.Text.Trim() = "" Then
             MessageBox.Show("Silakan pilih data dari tabel terlebih dahulu.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
-        ' Confirmation dialog
+
         Dim result As DialogResult = MessageBox.Show(
             "Apakah Anda yakin ingin menghapus data dengan NIM: " & NIMTextBox.Text & "?",
             "Konfirmasi Hapus",
@@ -205,10 +205,10 @@ Public Class DashboardDosen
 
             MessageBox.Show("Data berhasil dihapus.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' Refresh DataGridView setelah hapus
+
             TampilData()
 
-            ' Kosongkan input setelah berhasil delete
+
             NamaTextBox.Clear()
             NIMTextBox.Clear()
             ProdiComboBox.SelectedIndex = -1
@@ -231,7 +231,7 @@ Public Class DashboardDosen
         ProdiComboBox.SelectedIndex = -1
         RoleComboBox.SelectedIndex = -1
 
-        ' Optional: Disable tombol Edit & Hapus setelah clear
+
         EditButton.Enabled = False
         HapusButton.Enabled = False
 
@@ -270,7 +270,7 @@ Public Class DashboardDosen
             Dim jumlah As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
             If jumlah > 0 Then
-                ' NIM ditemukan → pindah form
+
                 NIMMahasiswa = NIMTextBox.Text.Trim()
                 NamaMahasiswa = AmbilNama(NIMMahasiswa)
                 ProdiMahasiswa = AmbilProdi(NIMMahasiswa)
