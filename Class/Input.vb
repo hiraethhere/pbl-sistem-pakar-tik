@@ -6,5 +6,4 @@
         kode = c
         value = v
     End Sub
-
 End Class

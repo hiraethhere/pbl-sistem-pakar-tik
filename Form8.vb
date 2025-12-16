@@ -22,8 +22,6 @@ Public Class HasilMahasiswa
     End Sub
 
     Private Sub HasilMahasiswa_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-
-
         TampilkanHasilRekomendasi()
     End Sub
 
@@ -64,12 +62,9 @@ Public Class HasilMahasiswa
             Return
         End If
 
-
         ChartHasil.Series("Persentase").Points.Clear()
 
-
         If results IsNot Nothing AndAlso results.Count > 0 Then
-
             GroupBox1.Text = "Hasil Rekomendasi Terakhir"
 
             For Each item In results
@@ -80,16 +75,11 @@ Public Class HasilMahasiswa
                 ChartHasil.Series("Persentase").Points.AddXY(profileName, percentage)
             Next
 
-
             ChartHasil.Titles.Clear()
             ChartHasil.Titles.Add("Top " & results.Count & " Profil Cocok")
 
-
             ChartHasil.ChartAreas(0).AxisY.Title = "Persentase Keyakinan (%)"
             ChartHasil.ChartAreas(0).AxisY.Maximum = 100
-
-
-
 
             ChartHasil.ChartAreas(0).AxisX.LabelStyle.Angle = 0
             ChartHasil.ChartAreas(0).AxisX.Interval = 1
@@ -97,16 +87,13 @@ Public Class HasilMahasiswa
             ChartHasil.ChartAreas(0).AxisY.MajorGrid.Enabled = False
             ChartHasil.ChartAreas(0).AxisY.MajorTickMark.Enabled = False
 
-
             Dim columnSeries As System.Windows.Forms.DataVisualization.Charting.Series
             columnSeries = ChartHasil.Series("Persentase")
 
             columnSeries.IsValueShownAsLabel = True
 
-
             columnSeries.LabelFormat = "{F0}%"
             columnSeries.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-
 
             ChartHasil.Series("Persentase").Color = Color.FromArgb(0, 150, 0)
         Else
@@ -115,7 +102,6 @@ Public Class HasilMahasiswa
     End Sub
 
     Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles PrintButton.Click
-
         Me.PrintPreviewDialog1.Document = Me.PrintDocument1
 
         Dim ppc As System.Windows.Forms.PrintPreviewControl = Nothing
@@ -130,19 +116,13 @@ Public Class HasilMahasiswa
             ppc.InvalidatePreview()
         End If
 
-
         Me.PrintPreviewDialog1.WindowState = FormWindowState.Maximized
 
-
         Me.PrintPreviewDialog1.ShowDialog()
-
-
-
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
         Try
-
             Dim g As Graphics = e.Graphics
             Dim marginX As Integer = 50
             Dim currentY As Integer = 50
@@ -152,13 +132,11 @@ Public Class HasilMahasiswa
             Dim headerFont As New Font("Arial", 12, FontStyle.Bold)
             Dim normalFont As New Font("Arial", 10)
 
-
             g.DrawString("LAPORAN HASIL REKOMENDASI PROFESI TIK", titleFont, Brushes.Black, marginX, currentY)
             currentY += 40
 
             g.DrawLine(Pens.Gray, marginX, currentY, e.PageBounds.Width - marginX, currentY)
             currentY += 15
-
 
             g.DrawString("DATA MAHASISWA:", headerFont, Brushes.DarkBlue, marginX, currentY)
             currentY += lineSpacing
@@ -171,7 +149,6 @@ Public Class HasilMahasiswa
 
             g.DrawString($"Prodi: {ProdiMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
             currentY += lineSpacing + 20
-
 
             g.DrawString("GRAFIK HASIL REKOMENDASI TERAKHIR:", headerFont, Brushes.DarkBlue, marginX, currentY)
             currentY += lineSpacing
@@ -186,10 +163,8 @@ Public Class HasilMahasiswa
             currentY += chartPrintHeight + 20
 
             e.HasMorePages = False
-
         Catch ex As Exception
             MessageBox.Show("Terjadi kesalahan saat mencetak: " & ex.Message, "Error Print")
         End Try
     End Sub
-
 End Class

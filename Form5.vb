@@ -34,9 +34,7 @@ Public Class FormRegistrasi
 
             Dim roleUser = "Mahasiswa"
 
-
             Dim hashedPassword As String = HashPassword(PasswordTextBox.Text.Trim())
-
 
             Dim query As String = "INSERT INTO users (nim, nama, prodi, role, password) VALUES (@NIM, @Nama, @Prodi, @Role, @Password)"
             Dim cmd As New SqlCommand(query, conn)
@@ -51,7 +49,6 @@ Public Class FormRegistrasi
 
             MessageBox.Show("Registrasi berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-
             NamaTextBox.Clear()
             NIMTextBox.Clear()
             ProdiComboBox.SelectedIndex = -1
@@ -59,10 +56,8 @@ Public Class FormRegistrasi
 
             FormDashboard.Show()
             Me.Close()
-
         Catch ex As Exception
             MessageBox.Show("Terjadi error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
         Finally
             TutupKoneksi()
         End Try

@@ -11,7 +11,6 @@ Public Class FormLogin
         Try
             BukaKoneksi()
 
-            ' Cari NIM di database
             Dim query As String = "SELECT password, role FROM users WHERE NIM = @NIM"
             Dim cmd As New SqlCommand(query, conn)
             cmd.Parameters.AddWithValue("@NIM", NIMTextBox.Text.Trim())
@@ -29,7 +28,6 @@ Public Class FormLogin
             Dim role As String = reader("role").ToString()
             reader.Close()
 
-            ' Bandingkan hash password input dengan database
             Dim inputHash As String = HashPassword(PasswordTextBox.Text.Trim())
 
             If inputHash <> storedHash Then
@@ -53,8 +51,6 @@ Public Class FormLogin
                 MessageBox.Show("Role tidak dikenali. Periksa database.", "Error Sistem", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End If
-
-            ' Me.Close() <--- HAPUS BARIS INI (Baris 92)
 
         Catch ex As Exception
             MessageBox.Show("Terjadi error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

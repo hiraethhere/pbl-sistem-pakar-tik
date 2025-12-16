@@ -72,7 +72,6 @@ Public Class FormPertanyaanCF
         End If
     End Sub
 
-
     Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles btnLanjut.Click
 
         Dim nilaiCFUser As Double = 0.0
@@ -92,9 +91,7 @@ Public Class FormPertanyaanCF
             Exit Sub
         End If
 
-
         jawabanCF.Add(New Input(kode, nilaiCFUser))
-
 
         indexPertanyaan += 1
         ResetRadioButtonColors()
@@ -183,7 +180,6 @@ Public Class FormPertanyaanCF
     Function combineCF(oldValue As Double, newValue As Double) As Double
         Return oldValue + newValue * (1.0 - oldValue)
     End Function
-
 
     Private ReadOnly HoverColor_A As Color = Color.FromArgb(255, 150, 150)
     Private ReadOnly HoverColor_B As Color = Color.FromArgb(150, 204, 204)

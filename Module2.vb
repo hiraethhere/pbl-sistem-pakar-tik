@@ -11,7 +11,6 @@ Module Module2
             For Each b As Byte In hash
                 builder.Append(b.ToString("x2"))
             Next
-
             Return builder.ToString()
         End Using
     End Function

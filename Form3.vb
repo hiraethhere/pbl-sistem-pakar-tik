@@ -3,7 +3,6 @@ Imports Microsoft.Data.SqlClient
 Imports System.Text
 
 Public Class FormHasil
-
     Public Sub New(ByVal results As List(Of Result))
         InitializeComponent()
 
@@ -11,7 +10,6 @@ Public Class FormHasil
 
         Dim top1ProfileName As String = ""
         Dim top1CFValue As Double = 0.0
-
 
         Dim top3Detail As New System.Text.StringBuilder()
         top3Detail.AppendLine("Top 3 Rekomendasi Profil:")
@@ -62,26 +60,20 @@ Public Class FormHasil
     End Function
 
     Private Sub btnTestLagi_Click(sender As Object, e As EventArgs) Handles btnTestLagi.Click
-
         Dim formDashboardMahasiswa As New DashboardMahasiswa()
         formDashboardMahasiswa.Show()
         Me.Close()
     End Sub
 
-
     Private Sub btnKeluarAplikasi_Click(sender As Object, e As EventArgs) Handles btnKeluarAplikasi.Click
         If MessageBox.Show("Apakah Anda yakin ingin logout?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-
-
             NIMMahasiswa = Nothing
             NamaMahasiswa = Nothing
             ProdiMahasiswa = Nothing
-
 
             Dim formDashboard As New FormDashboard()
             formDashboard.Show()
             Me.Close()
         End If
     End Sub
-
 End Class
