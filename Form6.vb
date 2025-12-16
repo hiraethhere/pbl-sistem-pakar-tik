@@ -3,11 +3,11 @@ Imports Microsoft.Data.SqlClient
 
 Public Class DashboardMahasiswa
 
-    ' --- PENTING: Konstruktor (Wajib) ---
+
     Public Sub New()
         InitializeComponent()
     End Sub
-    ' ------------------------------------
+
 
     Private Sub FormMahasiswa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ProdiComboBox.Items.Add("TI")
@@ -26,8 +26,6 @@ Public Class DashboardMahasiswa
     End Sub
 
     Private Sub DashboardMahasiswa_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        ' Fungsi ini dipanggil saat form pertama kali dimuat DAN setiap kali
-        ' form muncul kembali setelah form lain disembunyikan/ditutup.
         TampilkanHasilRekomendasi()
     End Sub
 
@@ -44,7 +42,7 @@ Public Class DashboardMahasiswa
                 End If
             End Using
         Catch ex As Exception
-            ' Abaikan error dan kembalikan kode jika gagal
+
         Finally
             ModuleKoneksi.TutupKoneksi()
         End Try
@@ -75,33 +73,33 @@ Public Class DashboardMahasiswa
                 ChartHasil.Series("Persentase").Points.AddXY(profileName, percentage)
             Next
 
-            ' Kustomisasi Chart
+
             ChartHasil.Titles.Clear()
             ChartHasil.Titles.Add("Top " & results.Count & " Profil Cocok")
 
-            ' --- PENGATURAN AXIS Y (Interval 5, Maks 100) ---
+
             ChartHasil.ChartAreas(0).AxisY.Title = "Persentase Keyakinan (%)"
             ChartHasil.ChartAreas(0).AxisY.Maximum = 100
 
 
 
-            ' --- PENGATURAN AXIS X (Tidak Miring) ---
-            ChartHasil.ChartAreas(0).AxisX.LabelStyle.Angle = 0 ' <-- Membuat tulisan tidak miring
+
+            ChartHasil.ChartAreas(0).AxisX.LabelStyle.Angle = 0
             ChartHasil.ChartAreas(0).AxisX.Interval = 1
 
-            ChartHasil.ChartAreas(0).AxisY.MajorGrid.Enabled = False     ' <-- Hapus garis horizontal
-            ChartHasil.ChartAreas(0).AxisY.MajorTickMark.Enabled = False ' <-- Hapus garis tick mark vertikal
+            ChartHasil.ChartAreas(0).AxisY.MajorGrid.Enabled = False
+            ChartHasil.ChartAreas(0).AxisY.MajorTickMark.Enabled = False
 
-            ' --- PENGATURAN LABEL PADA BAR ---
+
             Dim columnSeries As System.Windows.Forms.DataVisualization.Charting.Series
             columnSeries = ChartHasil.Series("Persentase")
 
-            columnSeries.IsValueShownAsLabel = True ' <-- Tampilkan label di atas bar
+            columnSeries.IsValueShownAsLabel = True
 
-            ' Gunakan format #VALY untuk menampilkan nilai, tambahkan % dan format tanpa desimal (F0)
+
             columnSeries.LabelFormat = "{F0}%"
             columnSeries.Font = New Font("Arial", 8.25F, FontStyle.Bold)
-            ' -------------------------------------------------------------
+
 
             ChartHasil.Series("Persentase").Color = Color.FromArgb(0, 150, 0)
         Else
@@ -122,6 +120,87 @@ Public Class DashboardMahasiswa
     Private Sub TestRekomendasiButton_Click(sender As Object, e As EventArgs) Handles TestRekomendasiButton.Click
         Dim formPertanyaan As New FormPertanyaanCF(NamaTextBox.Text)
         formPertanyaan.Show()
-        Me.Hide() ' Sembunyikan Form Data Diri
+        Me.Hide()
     End Sub
+
+    Private Sub PrintButton_Click(sender As Object, e As EventArgs) Handles PrintButton.Click
+        PrintPreviewDialog1.Document = PrintDocument1
+
+        Dim ppc As System.Windows.Forms.PrintPreviewControl = Nothing
+
+
+        If PrintPreviewDialog1.Controls.Count > 0 AndAlso TypeOf PrintPreviewDialog1.Controls(0) Is System.Windows.Forms.PrintPreviewControl Then
+            ppc = CType(PrintPreviewDialog1.Controls(0), System.Windows.Forms.PrintPreviewControl)
+        End If
+
+        If ppc IsNot Nothing Then
+            ppc.UseAntiAlias = False
+            ppc.Zoom = 1.0
+            ppc.InvalidatePreview()
+        End If
+
+
+        PrintPreviewDialog1.WindowState = FormWindowState.Maximized
+
+
+        PrintPreviewDialog1.ShowDialog()
+
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Try
+
+            Dim g As Graphics = e.Graphics
+            Dim marginX As Integer = 50
+            Dim currentY As Integer = 50
+            Dim lineSpacing As Integer = 25
+
+            Dim titleFont As New Font("Arial", 16, FontStyle.Bold)
+            Dim headerFont As New Font("Arial", 12, FontStyle.Bold)
+            Dim normalFont As New Font("Arial", 10)
+
+
+            g.DrawString("LAPORAN HASIL REKOMENDASI PROFESI TIK", titleFont, Brushes.Black, marginX, currentY)
+            currentY += 40
+
+
+            g.DrawLine(Pens.Gray, marginX, currentY, e.PageBounds.Width - marginX, currentY)
+            currentY += 15
+
+
+            g.DrawString("DATA MAHASISWA:", headerFont, Brushes.DarkBlue, marginX, currentY)
+            currentY += lineSpacing
+
+
+            g.DrawString($"Nama: {NamaMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
+            currentY += lineSpacing
+
+            g.DrawString($"NIM: {NIMMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
+            currentY += lineSpacing
+
+            g.DrawString($"Prodi: {ProdiMahasiswa}", normalFont, Brushes.Black, marginX, currentY)
+            currentY += lineSpacing + 20
+
+
+            g.DrawString("GRAFIK HASIL REKOMENDASI TERAKHIR:", headerFont, Brushes.DarkBlue, marginX, currentY)
+            currentY += lineSpacing
+
+
+            Dim chartPrintWidth As Integer = e.PageBounds.Width - 2 * marginX
+            Dim chartPrintHeight As Integer = 300
+
+            Dim chartDrawingArea As New Rectangle(marginX, currentY, chartPrintWidth, chartPrintHeight)
+
+
+            ChartHasil.Printing.PrintPaint(g, chartDrawingArea)
+
+            currentY += chartPrintHeight + 20
+
+            e.HasMorePages = False
+
+        Catch ex As Exception
+            MessageBox.Show("Terjadi kesalahan saat mencetak: " & ex.Message, "Error Print")
+        End Try
+    End Sub
+
 End Class

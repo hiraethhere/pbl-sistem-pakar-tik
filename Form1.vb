@@ -3,15 +3,6 @@
 Public Class FormLogin
     Private IsNavigatingAway As Boolean = False
     Private Sub btnLanjut_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
-        'If txtNama.Text.Trim() = "" Or txtNIM.Text.Trim() = "" Then
-        '    MessageBox.Show("Mohon isi data diri lengkap.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        '    Exit Sub
-        'End If
-
-        ' Inisialisasi dan tampilkan Form Pertanyaan (dengan nama yang di-passing)
-        'Dim formPertanyaan As New FormPertanyaanCF(txtNama.Text)
-        'formPertanyaan.Show()
-        'Me.Hide() ' Sembunyikan Form Data Diri
         If NIMTextBox.Text.Trim() = "" Or PasswordTextBox.Text.Trim() = "" Then
             MessageBox.Show("Silakan isi NIM dan Password.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -90,8 +81,6 @@ Public Class FormLogin
     End Function
 
     Private Sub FormDataDiri_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        ' Hanya tampilkan Dashboard jika form ditutup oleh user (tombol 'X'),
-        ' DAN BUKAN saat sedang bernavigasi/setelah login berhasil.
         If e.CloseReason = CloseReason.UserClosing AndAlso IsNavigatingAway = False Then
             Dim formDashboard As New FormDashboard()
             formDashboard.Show()
@@ -107,9 +96,5 @@ Public Class FormLogin
         Dim FormDashboard As New FormDashboard
         FormDashboard.Show()
         Me.Close()
-    End Sub
-
-    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
-
     End Sub
 End Class
